@@ -73,20 +73,20 @@ So what does it actually do? Well, a lot:
 - replaces 1*4 with 1x4, etc.
 - replaces 2^4 with 2<sup>4</sup>
 - replaces 1/4  with <sup>1</sup>&#8260;<sub>4</sub>
-- wrap numbers in <span class="numbers">
-- single character words are forced to next line with insertion of &nbsp;
-- fractions are kept together with insertion of &nbsp;
-- units and values are kept together with insertion of &nbsp;
+- wrap numbers in `<span class="numbers">`
+- single character words are forced to next line with insertion of `&nbsp;`
+- fractions are kept together with insertion of `&nbsp;`
+- units and values are kept together with insertion of `&nbsp;`
 - Em and En dashes are wrapped in thin spaces
 - Remove extra space characters
 - enables widow handling
 - enables wrapping at hard hyphens internal to a word with the insertion of a zero-width-space
 - enables wrapping of urls
 - enables wrapping of email addresses
-- wrap ampersands in <span class="amp">
-- wrap caps in <span class="caps">
-- wrap initial quotes in <span class="quo"> or <span class="dquo">
-- wrap numbers in <span class="numbers">
+- wrap ampersands in `<span class="amp">`
+- wrap caps in `<span class="caps">`
+- wrap initial quotes in `<span class="quo">` or `<span class="dquo">`
+- wrap numbers in `<span class="numbers">`
 - enables language-aware hyphenation of text via `&shy;`
 
 ...and more. If you don't like the default behavior, you can enable, disable, or change any of the settings via the `config.php` file. See the **Configuring Typogrify** section for details.
