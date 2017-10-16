@@ -12,7 +12,7 @@ namespace nystudio107\typogrify\services;
 
 use nystudio107\typogrify\Typogrify;
 
-use Debach\PhpTypography\PhpTypography;
+use nystudio107\PhpTypography\PhpTypography;
 use Michelf\SmartyPants;
 
 use craft\base\Component;
