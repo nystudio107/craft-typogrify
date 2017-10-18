@@ -12,9 +12,9 @@ namespace nystudio107\typogrify\services;
 
 use nystudio107\typogrify\Typogrify;
 
-use nystudio107\PhpTypography\PhpTypography;
 use Michelf\SmartyPants;
 
+use Craft;
 use craft\base\Component;
 
 /**
@@ -28,26 +28,37 @@ class TypogrifyService extends Component
     // =========================================================================
 
     /**
-     * @var PhpTypography
+     * @var \PHP_Typography\PHP_Typography
      */
     public $phpTypography;
+
+    /**
+     * @var \PHP_Typography\Settings
+     */
+    public $phpTypographySettings;
 
     // Public Methods
     // =========================================================================
 
+    /**
+     * @inheritdoc
+     */
     public function init()
     {
         parent::init();
 
+        // Create a new phpTypographySettings instance
+        $this->phpTypographySettings = new \PHP_Typography\Settings();
+
         // Create a new PhpTypography instance
-        $this->phpTypography = new PhpTypography();
+        $this->phpTypography = new \PHP_Typography\PHP_Typography();
 
         // Apply our default settings
         $settings = Typogrify::$plugin->getSettings();
         if ($settings !== false) {
             $settingsArray = $settings->toArray();
             foreach ($settingsArray as $key => $value) {
-                $this->phpTypography->{$key}($value);
+                $this->phpTypographySettings->{$key}($value);
             }
         }
     }
@@ -63,7 +74,8 @@ class TypogrifyService extends Component
             return '';
         }
 
-        return $this->phpTypography->process($text);
+        $result = $this->phpTypography->process($text, $this->phpTypographySettings);
+        return $result;
     }
 
     /**

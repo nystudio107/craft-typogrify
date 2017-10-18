@@ -76,7 +76,7 @@ return [
     //	"singleGuillemetsReversed" => "&rsaquo;foo&lsaquo;",
     //	"cornerBrackets" => "&#x300c;foo&#x300d;",
     //	"whiteCornerBracket" => "&#x300e;foo&#x300f;",
-    "set_smart_quotes_secondary" => "",
+    "set_smart_quotes_secondary" => "singleCurled",
 
     // replaces "a--a" with En Dash " -- " and "---" with Em Dash
     "set_smart_dashes" => true,

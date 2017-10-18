@@ -79,10 +79,10 @@ class TypogrifyTwigExtension extends \Twig_Extension
     }
 
     /**
-     * @return PhpTypography
+     * @return \PHP_Typography\Settings
      */
-    public function getPhpTypography()
+    public function getPhpTypographySettings()
     {
-        return Typogrify::$plugin->typogrify->phpTypography;
+        return Typogrify::$plugin->typogrify->phpTypographySettings;
     }
 }
