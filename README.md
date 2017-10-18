@@ -30,7 +30,7 @@ It does things like smart "curly" printer's quotes, en-dash & em-dash, language-
 
 It allows you to "client-proof" sites by applying all of these typographic nicities to text before it's displayed, no matter where the text comes from.
 
-This plugin is roughly a Craft 3 port of Jamie Pittock's wonderful [Craft-Typogrify](https://github.com/jamiepittock/craft-typogrify) plugin for Craft 2.x, and uses the [php-typography](https://github.com/debach/php-typography) and [php-smartypants](https://github.com/michelf/php-smartypants) to do its thing.
+This plugin is roughly a Craft 3 port of Jamie Pittock's wonderful [Craft-Typogrify](https://github.com/jamiepittock/craft-typogrify) plugin for Craft 2.x, and uses the [php-typography](https://github.com/mundschenk-at/php-typography) and [php-smartypants](https://github.com/michelf/php-smartypants) to do its thing.
 
 ## Configuring Typogrify
 
@@ -46,7 +46,7 @@ Typogrify provides two filters for prettifying your text:
 
 ### typogrify
 
-Uses [php-typography](https://github.com/debach/php-typography) to apply typographic best practices to text, rich text, and HTML.
+Uses [php-typography](https://github.com/mundschenk-at/php-typography) to apply typographic best practices to text, rich text, and HTML.
 
 Usage:
 
@@ -65,31 +65,30 @@ Or:
 
 So what does it actually do? Well, a lot:
 
-- curl quotemarks
-- replaces "a--a" with En Dash " -- " and "---" with Em Dash
-- replaces "..." with "…"
-- replaces "creme brulee" with "crème brûlée"
-- replaces (r) (c) (tm) (sm) (p) (R) (C) (TM) (SM) (P) with ® © ™ ℠ ℗
-- replaces 1*4 with 1x4, etc.
-- replaces 2^4 with 2<sup>4</sup>
-- replaces 1/4  with <sup>1</sup>&#8260;<sub>4</sub>
-- wrap numbers in `<span class="numbers">`
-- single character words are forced to next line with insertion of `&nbsp;`
-- fractions are kept together with insertion of `&nbsp;`
-- units and values are kept together with insertion of `&nbsp;`
-- Em and En dashes are wrapped in thin spaces
-- Remove extra space characters
-- enables widow handling
-- enables wrapping at hard hyphens internal to a word with the insertion of a zero-width-space
-- enables wrapping of urls
-- enables wrapping of email addresses
-- wrap ampersands in `<span class="amp">`
-- wrap caps in `<span class="caps">`
-- wrap initial quotes in `<span class="quo">` or `<span class="dquo">`
-- wrap numbers in `<span class="numbers">`
-- enables language-aware hyphenation of text via `&shy;`
+*   Hyphenation — over 50 languages supported via `&shy;`
+*   Space control, including:
+    -   widow protection
+    -   gluing values to units
+    -   forced internal wrapping of long URLs & email addresses
+*   Intelligent character replacement, including smart handling of:
+    -   quote marks (‘single’, “double”)
+    -   dashes ( – )
+    -   ellipses (…)
+    -   trademarks, copyright & service marks (™ ©)
+    -   math symbols (5×5×5=53)
+    -   fractions (<sup>1</sup>⁄<sub>16</sub>)
+    -   ordinal suffixes (1<sup>st</sup>, 2<sup>nd</sup>)
+*   CSS hooks for styling:
+    -   ampersands,
+    -   uppercase words,
+    -   numbers,
+    -   initial quotes & guillemets.
 
 ...and more. If you don't like the default behavior, you can enable, disable, or change any of the settings via the `config.php` file. See the **Configuring Typogrify** section for details.
+
+#### Troubleshooting
+
+If it doesn't look like Typogrify is doing anything to the HTML you're passing it, it is probably malformed HTML (syntax errors, missing closing tags, etc.). Fix your HTML, and Typogrify will prettify it!
 
 ### smartypants
 
@@ -114,20 +113,20 @@ Or:
 
 ## Advanced Usage
 
-Should you need advanced control over Typogrify in your templates, you can use the `getPhpTypography()` Twig function:
+Should you need advanced control over Typogrify in your templates, you can use the `getPhpTypographySettings()` Twig function:
 
 ```
-{% set phpTypography = getPhpTypography() %}
+{% set phpTypographySettings = getPhpTypographySettings() %}
 ```
 
-This returns a `\Debach\PhpTypography\PhpTypography` object to your templates that Typogrify uses to do its thing. Then you can do advanced or dynamic configuration changes such as:
+This returns a `\PHP_Typography\Settings` object to your templates that Typogrify uses to do its thing. Then you can do advanced or dynamic configuration changes such as:
 
 ```
-{% do phpTypography.set_hyphenation_language('fr') %}
-{% do phpTypography.set_diacritic_language('fr') %}
+{% do phpTypographySettings.set_hyphenation_language('fr') %}
+{% do phpTypographySettings.set_diacritic_language('fr') %}
 ```
 
-...or anything else you care to do. See the [PhpTypography class](https://github.com/debach/php-typography/blob/master/PhpTypography.php) for details.
+...or anything else you care to do. See the [PhpTypography Settings class](https://github.com/mundschenk-at/php-typography/blob/master/src/class-settings.php) for details.
 
 ## Typogrify Roadmap
 

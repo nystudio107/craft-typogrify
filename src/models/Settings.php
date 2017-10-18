@@ -100,7 +100,7 @@ class Settings extends Model
      *
      * @var string
      */
-    public $set_smart_quotes_secondary = "";
+    public $set_smart_quotes_secondary = "singleCurled";
 
     /**
      * replaces "a--a" with En Dash " -- " and "---" with Em Dash
