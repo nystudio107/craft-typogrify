@@ -36,7 +36,7 @@ This plugin is roughly a Craft 3 port of Jamie Pittock's wonderful [Craft-Typogr
 
 There's no configuration necessary for Typogrify, but it does provide a `config.php` file that you can use to tweak its behavior to your heart's content.
 
-If you want to change Typogrify's default settings, copy the `src/config.php` it to `craft/config` as `typogrify.php` and make your changes there.
+If you want to change Typogrify's default settings, copy the `src/config.php` to `craft/config` as `typogrify.php` and make your changes there.
 
 Once copied to `craft/config`, this file will be multi-environment aware as well, so you can have different settings groups for each environment, just as you do for `general.php`.
 
