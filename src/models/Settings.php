@@ -10,6 +10,9 @@
 
 namespace nystudio107\typogrify\models;
 
+use \PHP_Typography\Settings\Dash_Style;
+use \PHP_Typography\Settings\Quote_Style;
+
 use craft\base\Model;
 use craft\validators\ArrayValidator;
 
@@ -29,7 +32,22 @@ class Settings extends Model
      * @var array
      */
     public $set_tags_to_ignore = [
-        "code", "head", "kbd", "object", "option", "pre", "samp", "script", "select", "style", "textarea", "title", "var", "math",
+        "code",
+        "head",
+        "kbd",
+        "object",
+        "option",
+        "pre",
+        "samp",
+        "script",
+        "noscript",
+        "noembed",
+        "select",
+        "style",
+        "textarea",
+        "title",
+        "var",
+        "math"
     ];
 
     /**
@@ -38,7 +56,8 @@ class Settings extends Model
      * @var array
      */
     public $set_classes_to_ignore = [
-        "vcard", "noTypo",
+        "vcard",
+        "noTypo"
     ];
 
     /**
@@ -77,7 +96,7 @@ class Settings extends Model
      *
      * @var string
      */
-    public $set_smart_quotes_primary = "doubleCurled";
+    public $set_smart_quotes_primary = Quote_Style::DOUBLE_CURLED;
 
     /**
      * Secondary quotemarks style
@@ -100,7 +119,7 @@ class Settings extends Model
      *
      * @var string
      */
-    public $set_smart_quotes_secondary = "singleCurled";
+    public $set_smart_quotes_secondary = Quote_Style::SINGLE_CURLED;
 
     /**
      * replaces "a--a" with En Dash " -- " and "---" with Em Dash
@@ -108,6 +127,17 @@ class Settings extends Model
      * @var bool
      */
     public $set_smart_dashes = true;
+
+    /**
+     * Sets the typographical conventions used by smart_dashes.
+     *
+     * Allowed values for $style:
+     * - "traditionalUS"
+     * - "international"
+     *
+     * @var string
+     */
+    public $set_smart_dashes_style = Dash_Style::TRADITIONAL_US;
 
     /**
      * replaces "..." with "…"
@@ -219,6 +249,13 @@ class Settings extends Model
     public $set_space_collapse = true;
 
     /**
+     * Enable usage of true "no-break narrow space" (&#8239;) instead of the normal no-break space (&nbsp;).
+     *
+     * @var bool
+     */
+    public $set_true_no_break_narrow_space = false;
+
+    /**
      * enables widow handling
      *
      * @var bool
@@ -301,7 +338,17 @@ class Settings extends Model
      * @var array
      */
     public $set_initial_quote_tags = [
-        "p", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote", "li", "dd", "dt",
+        "p",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "blockquote",
+        "li",
+        "dd",
+        "dt"
     ];
 
     /**
@@ -369,6 +416,20 @@ class Settings extends Model
     public $set_hyphenation_exceptions = [
     ];
 
+    /**
+     * Enable lenient parser error handling (HTML is "best guess" if enabled).
+     *
+     * @var bool
+     */
+    public $set_ignore_parser_errors = true;
+
+    /**
+     * Sets an optional handler for parser errors. Invalid callbacks will be silently ignored
+     *
+     * @var callable|null
+     */
+    public $set_parser_errors_handler = null;
+
     // Public Methods
     // =========================================================================
 
@@ -418,6 +479,7 @@ class Settings extends Model
                     'set_unit_spacing',
                     'set_dash_spacing',
                     'set_space_collapse',
+                    'set_true_no_break_narrow_space',
                     'set_dewidow',
                     'set_wrap_hard_hyphens',
                     'set_url_wrap',
@@ -430,6 +492,7 @@ class Settings extends Model
                     'set_hyphenate_headings',
                     'set_hyphenate_all_caps',
                     'set_hyphenate_title_case',
+                    'set_ignore_parser_errors',
                 ],
                 'boolean',
             ],
@@ -444,6 +507,12 @@ class Settings extends Model
                     'set_hyphenation_exceptions',
                 ],
                 ArrayValidator::class,
+            ],
+            [
+                [
+                    'set_parser_errors_handler',
+                ],
+                'safe',
             ],
         ];
     }
