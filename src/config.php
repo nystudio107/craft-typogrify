@@ -8,6 +8,9 @@
  * @copyright Copyright (c) 2017 nystudio107
  */
 
+use \PHP_Typography\Settings\Dash_Style;
+use \PHP_Typography\Settings\Quote_Style;
+
 /**
  * Typogrify config.php
  *
@@ -25,12 +28,28 @@
 return [
     // sets tags where typography of children will be untouched
     "set_tags_to_ignore" => [
-        "code", "head", "kbd", "object", "option", "pre", "samp", "script", "select", "style", "textarea", "title", "var", "math"
+        "code",
+        "head",
+        "kbd",
+        "object",
+        "option",
+        "pre",
+        "samp",
+        "script",
+        "noscript",
+        "noembed",
+        "select",
+        "style",
+        "textarea",
+        "title",
+        "var",
+        "math"
     ],
 
     // sets classes where typography of children will be untouched
     "set_classes_to_ignore" => [
-        "vcard", "noTypo"
+        "vcard",
+        "noTypo"
     ],
 
     // sets IDs where typography of children will be untouched
@@ -57,7 +76,7 @@ return [
     //	"singleGuillemetsReversed" => "&rsaquo;foo&lsaquo;",
     //	"cornerBrackets" => "&#x300c;foo&#x300d;",
     //	"whiteCornerBracket" => "&#x300e;foo&#x300f;",
-    "set_smart_quotes_primary" => "doubleCurled",
+    "set_smart_quotes_primary" => Quote_Style::DOUBLE_CURLED,
 
     // Secondary quotemarks style
     // allowed values for $style
@@ -76,10 +95,17 @@ return [
     //	"singleGuillemetsReversed" => "&rsaquo;foo&lsaquo;",
     //	"cornerBrackets" => "&#x300c;foo&#x300d;",
     //	"whiteCornerBracket" => "&#x300e;foo&#x300f;",
-    "set_smart_quotes_secondary" => "singleCurled",
+    "set_smart_quotes_secondary" => Quote_Style::SINGLE_CURLED,
 
     // replaces "a--a" with En Dash " -- " and "---" with Em Dash
     "set_smart_dashes" => true,
+
+    // Sets the typographical conventions used by smart_dashes.
+    //
+    // Allowed values for $style:
+    // - "traditionalUS"
+    // - "international"
+    "set_smart_dashes_style" => Dash_Style::TRADITIONAL_US,
 
     // replaces "..." with "…"
     "set_smart_ellipses" => true,
@@ -130,6 +156,9 @@ return [
     // Remove extra space characters
     "set_space_collapse" => true,
 
+    // Enable usage of true "no-break narrow space" (&#8239;) instead of the normal no-break space (&nbsp;).
+    "set_true_no_break_narrow_space" => false,
+
     // enables widow handling
     "set_dewidow" => true,
 
@@ -165,7 +194,17 @@ return [
 
     // sets tags where initial quotes and guillemets should be styled
     "set_initial_quote_tags" => [
-        "p", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote", "li", "dd", "dt"
+        "p",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "blockquote",
+        "li",
+        "dd",
+        "dt"
     ],
 
     // enables hyphenation of text
@@ -196,4 +235,10 @@ return [
     // expected input is an array of words with all hyphenation points marked with a hard hyphen
     "set_hyphenation_exceptions" => [
     ],
+
+    // Enable lenient parser error handling (HTML is "best guess" if enabled).
+    "set_ignore_parser_errors" => true,
+
+    // Sets an optional handler for parser errors. Invalid callbacks will be silently ignored
+    "set_parser_errors_handler" => null,
 ];
