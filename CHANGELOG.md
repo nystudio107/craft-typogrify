@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.1.1 - 2017-11-06
+### Added
+- Added `humanDuration()` and `humanRelativeTime()`
+
 ## 1.1.0 - 2017-11-05
 ### Added
 - Added `humanFileSize()` to convert bytes to a human readable number, e.g.: 1024 becomes 1K

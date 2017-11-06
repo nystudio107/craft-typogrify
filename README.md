@@ -30,7 +30,7 @@ It does things like smart "curly" printer's quotes, en-dash & em-dash, language-
 
 It allows you to "client-proof" sites by applying all of these typographic nicities to text before it's displayed, no matter where the text comes from.
 
-Typogrify also has some handy _inflector_ functions to do things like give you the plural or singular version of a word, human-readable file sizes, and more.
+Typogrify also has some handy _inflector_ functions to do things like give you the plural or singular version of a word, human-readable relative times/durations, human-readable file sizes, and more.
 
 This plugin is roughly a Craft 3 port of Jamie Pittock's wonderful [Craft-Typogrify](https://github.com/jamiepittock/craft-typogrify) plugin for Craft 2.x, and uses the [php-typography](https://github.com/mundschenk-at/php-typography) and [php-smartypants](https://github.com/michelf/php-smartypants) to do its thing.
 
@@ -68,7 +68,7 @@ Or:
 Or:
 
 ```
-{{ content |craft.typogrify.typogrify }}
+{{ craft.typogrify.typogrify(content) }}
 ```
 
 
@@ -94,6 +94,23 @@ So what does it actually do? Well, a lot:
     -   initial quotes & guillemets.
 
 ...and more. If you don't like the default behavior, you can enable, disable, or change any of the settings via the `config.php` file. See the **Configuring Typogrify** section for details.
+
+#### Advanced Usage
+
+Should you need advanced control over Typogrify in your templates, you can use the `getPhpTypographySettings()` Twig function:
+
+```
+{% set phpTypographySettings = getPhpTypographySettings() %}
+```
+
+This returns a `\PHP_Typography\Settings` object to your templates that Typogrify uses to do its thing. Then you can do advanced or dynamic configuration changes such as:
+
+```
+{% do phpTypographySettings.set_hyphenation_language('fr') %}
+{% do phpTypographySettings.set_diacritic_language('fr') %}
+```
+
+...or anything else you care to do. See the [PhpTypography Settings class](https://github.com/mundschenk-at/php-typography/blob/master/src/class-settings.php) for details.
 
 #### Troubleshooting
 
@@ -123,12 +140,12 @@ Or:
 Or:
 
 ```
-{{ content |craft.typogrify.smartypants }}
+{{ craft.typogrify.smartypants(content) }}
 ```
 
-### Inflectors
+### Human-Readable Formats
 
-Typogrify also provides a number of _inflectors_ that allow you to do things like give you the plural or singular version of a word, human-readable file sizes, and more.
+Typogrify can output human-readable durations, relative times, and file sizes. These are all localized based on the current Craft site language.
 
 **humanFileSize** - Translate bytes into something human-readable. For example, 1024 to 1K
 
@@ -149,6 +166,48 @@ Or:
 ```
 {{ humanFileSize(1240547, 2) }}
 ```
+
+**humanDuration** - Represents the value as duration in human readable format. For example, `131` represents `2 minutes, 11 seconds`
+
+Usage:
+
+```
+{{ 131 |humanDuration }}
+```
+
+Or:
+
+```
+{{ craft.typogrify.humanDuration(131) }}
+```
+
+`humanDuration` will accept a `\DateInterval` object, a number in seconds, or an [ISO8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations) format
+
+**humanRelativeTime** - Formats the value as the time interval between a date and now in human readable form. For example, `in two days` or `3 months ago`
+
+Usage:
+
+```
+{{ someDateTime |humanRelativeTime }}
+```
+
+Or:
+
+```
+{{ craft.typogrify.humanRelativeTime(someDateTime) }}
+```
+
+`humanRelativeTime` will accept a `\DateTime` object, a `\DateInterval` object, a UNIX timestamp, or a string that can be [parsed to create a DateTime object](http://php.net/manual/en/datetime.formats.php).
+
+An optional second parameter lets you specify what to use as a reference time instead of `now` (it defaults to `now`):
+
+```
+{{ humanRelativeTime(someDateTime, referenceDateTime) }}
+```
+
+### Inflectors
+
+Typogrify also provides a number of _inflectors_ that allow you to do things like give you the plural or singular version of a word, and more.
 
 **ordinalize** - Converts number to its ordinal English form. For example, converts 13 to 13th, 2 to 2nd
 
@@ -214,23 +273,6 @@ Or:
 ```
 {{  craft.typogrify.transliterate(content) }}
 ```
-
-## Advanced Usage
-
-Should you need advanced control over Typogrify in your templates, you can use the `getPhpTypographySettings()` Twig function:
-
-```
-{% set phpTypographySettings = getPhpTypographySettings() %}
-```
-
-This returns a `\PHP_Typography\Settings` object to your templates that Typogrify uses to do its thing. Then you can do advanced or dynamic configuration changes such as:
-
-```
-{% do phpTypographySettings.set_hyphenation_language('fr') %}
-{% do phpTypographySettings.set_diacritic_language('fr') %}
-```
-
-...or anything else you care to do. See the [PhpTypography Settings class](https://github.com/mundschenk-at/php-typography/blob/master/src/class-settings.php) for details.
 
 ## Typogrify Roadmap
 
