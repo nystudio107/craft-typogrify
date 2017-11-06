@@ -278,6 +278,6 @@ Or:
 
 Some things to do, and ideas for potential features:
 
-* Release it
+* Whatever else @mikestecker asks for
 
 Brought to you by [nystudio107](https://nystudio107.com/)
