@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2017 nystudio107
  */
 
-namespace nystudio107\typogrify\twigextensions;
+namespace nystudio107\typogrify\variables;
 
 use nystudio107\typogrify\Typogrify;
 
@@ -19,51 +19,10 @@ use craft\helpers\Template;
  * @package   Typogrify
  * @since     1.0.0
  */
-class TypogrifyTwigExtension extends \Twig_Extension
+class TypogrifyVariable
 {
     // Public Methods
     // =========================================================================
-
-    /**
-     * @inheritdoc
-     */
-    public function getName()
-    {
-        return 'Typogrify';
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getFilters()
-    {
-        return [
-            new \Twig_SimpleFilter('typogrify', [$this, 'typogrify']),
-            new \Twig_SimpleFilter('smartypants', [$this, 'smartypants']),
-            new \Twig_SimpleFilter('humanFileSize', [$this, 'humanFileSize']),
-            new \Twig_SimpleFilter('ordinalize', [$this, 'ordinalize']),
-            new \Twig_SimpleFilter('pluralize', [$this, 'pluralize']),
-            new \Twig_SimpleFilter('singularize', [$this, 'singularize']),
-            new \Twig_SimpleFilter('transliterate', [$this, 'transliterate']),
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getFunctions()
-    {
-        return [
-            new \Twig_SimpleFunction('typogrify', [$this, 'typogrify']),
-            new \Twig_SimpleFunction('smartypants', [$this, 'smartypants']),
-            new \Twig_SimpleFunction('getPhpTypography', [$this, 'getPhpTypography']),
-            new \Twig_SimpleFunction('humanFileSize', [$this, 'humanFileSize']),
-            new \Twig_SimpleFunction('ordinalize', [$this, 'ordinalize']),
-            new \Twig_SimpleFunction('pluralize', [$this, 'pluralize']),
-            new \Twig_SimpleFunction('singularize', [$this, 'singularize']),
-            new \Twig_SimpleFunction('transliterate', [$this, 'transliterate']),
-        ];
-    }
 
     /**
      * @param string $text

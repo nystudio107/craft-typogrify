@@ -30,6 +30,8 @@ It does things like smart "curly" printer's quotes, en-dash & em-dash, language-
 
 It allows you to "client-proof" sites by applying all of these typographic nicities to text before it's displayed, no matter where the text comes from.
 
+Typogrify also has some handy _inflector_ functions to do things like give you the plural or singular version of a word, human-readable file sizes, and more.
+
 This plugin is roughly a Craft 3 port of Jamie Pittock's wonderful [Craft-Typogrify](https://github.com/jamiepittock/craft-typogrify) plugin for Craft 2.x, and uses the [php-typography](https://github.com/mundschenk-at/php-typography) and [php-smartypants](https://github.com/michelf/php-smartypants) to do its thing.
 
 ## Configuring Typogrify
@@ -62,6 +64,13 @@ Or:
 {% endfilter %}
 
 ```
+
+Or:
+
+```
+{{ content |craft.typogrify.typogrify }}
+```
+
 
 So what does it actually do? Well, a lot:
 
@@ -109,6 +118,101 @@ Or:
     <p>Your text here</p>
 {% endfilter %}
 
+```
+
+Or:
+
+```
+{{ content |craft.typogrify.smartypants }}
+```
+
+### Inflectors
+
+Typogrify also provides a number of _inflectors_ that allow you to do things like give you the plural or singular version of a word, human-readable file sizes, and more.
+
+**humanFileSize** - Translate bytes into something human-readable. For example, 1024 to 1K
+
+Usage:
+
+```
+{{ 1240547 |humanFileSize }}
+```
+
+Or:
+
+```
+{{ craft.typogrify.humanFileSize(1240547) }}
+```
+
+`humanFileSize` also accepts an optional parameter to indicate how many decimal places to use (it defaults to 1):
+
+```
+{{ humanFileSize(1240547, 2) }}
+```
+
+**ordinalize** - Converts number to its ordinal English form. For example, converts 13 to 13th, 2 to 2nd
+
+Usage:
+
+```
+{{ 13 |ordinalize }}
+```
+
+Or:
+
+```
+{{ craft.typogrify.ordinalize(13) }}
+```
+
+**pluralize** - Converts a word to its plural form. For example, 'apple' will become 'apples', and 'child' will become 'children'
+
+Usage:
+
+```
+{{ 'apple' |pluralize }}
+```
+
+Or:
+
+```
+{{ craft.typogrify.pluralize('apple') }}
+```
+
+**singularize** - Converts a word to its singular form. For example, 'apples' will become 'apple', and 'children' will become 'child'
+
+Usage:
+
+```
+{{ 'children' |singularize }}
+```
+
+Or:
+
+```
+{{ craft.typogrify.singularize('children') }}
+```
+
+**transliterate** - Returns transliterated version of a string. For example, `获取到 どちら Українська: ґ,є, Српска: ђ, њ, џ! ¿Español?` will be transliterated to `huo qu dao dochira Ukrainsʹka: g,e, Srpska: d, n, d! ¿Espanol?`
+
+Usage:
+
+```
+{{ content |transliterate }}
+```
+
+Or:
+
+```
+{% filter transliterate %}
+    <p>Your text here</p>
+{% endfilter %}
+
+```
+
+Or:
+
+```
+{{  craft.typogrify.transliterate(content) }}
 ```
 
 ## Advanced Usage
