@@ -16,8 +16,7 @@ use nystudio107\typogrify\models\Settings;
 
 use Craft;
 use craft\base\Plugin;
-use craft\services\Plugins;
-use craft\events\PluginEvent;
+use craft\web\twig\variables\CraftVariable;
 
 use yii\base\Event;
 
@@ -28,7 +27,9 @@ use yii\base\Event;
  * @package   Typogrify
  * @since     1.0.0
  *
+ * @property  Settings         $settings
  * @property  TypogrifyService $typogrify
+ * @method    Settings         getSettings()
  */
 class Typogrify extends Plugin
 {
@@ -53,12 +54,14 @@ class Typogrify extends Plugin
 
         Craft::$app->view->twig->addExtension(new TypogrifyTwigExtension());
 
+        // Register our variables
         Event::on(
-            Plugins::class,
-            Plugins::EVENT_AFTER_INSTALL_PLUGIN,
-            function (PluginEvent $event) {
-                if ($event->plugin === $this) {
-                }
+            CraftVariable::class,
+            CraftVariable::EVENT_INIT,
+            function (Event $event) {
+                /** @var CraftVariable $variable */
+                $variable = $event->sender;
+                $variable->set('typogrify', Typogrify::class);
             }
         );
 

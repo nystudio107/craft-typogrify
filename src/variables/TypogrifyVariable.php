@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2017 nystudio107
  */
 
-namespace nystudio107\typogrify\twigextensions;
+namespace nystudio107\typogrify\variables;
 
 use nystudio107\typogrify\Typogrify;
 
@@ -19,41 +19,10 @@ use craft\helpers\Template;
  * @package   Typogrify
  * @since     1.0.0
  */
-class TypogrifyTwigExtension extends \Twig_Extension
+class TypogrifyVariable
 {
     // Public Methods
     // =========================================================================
-
-    /**
-     * @inheritdoc
-     */
-    public function getName()
-    {
-        return 'Typogrify';
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getFilters()
-    {
-        return [
-            new \Twig_SimpleFilter('typogrify', [$this, 'typogrify']),
-            new \Twig_SimpleFilter('smartypants', [$this, 'smartypants']),
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getFunctions()
-    {
-        return [
-            new \Twig_SimpleFunction('typogrify', [$this, 'typogrify']),
-            new \Twig_SimpleFunction('smartypants', [$this, 'smartypants']),
-            new \Twig_SimpleFunction('getPhpTypography', [$this, 'getPhpTypography']),
-        ];
-    }
 
     /**
      * @param string $text
