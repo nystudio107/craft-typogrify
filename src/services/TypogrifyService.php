@@ -102,7 +102,7 @@ class TypogrifyService extends Component
      *
      * @return string
      */
-    public function humanFileSize($bytes, $decimals = 2): string
+    public function humanFileSize($bytes, $decimals = 1): string
     {
         $sz = 'BKMGTP';
         $factor = floor((strlen($bytes) - 1) / 3);

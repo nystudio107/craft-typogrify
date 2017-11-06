@@ -62,7 +62,7 @@ class TypogrifyVariable
      *
      * @return \Twig_Markup
      */
-    public function humanFileSize($bytes, $decimals = 2)
+    public function humanFileSize($bytes, $decimals = 1)
     {
         return Template::raw(Typogrify::$plugin->typogrify->humanFileSize($bytes, $decimals));
     }

@@ -141,7 +141,13 @@ Usage:
 Or:
 
 ```
-{{ 1240547 |craft.typogrify.humanFileSize }}
+{{ craft.typogrify.humanFileSize(1240547) }}
+```
+
+`humanFileSize` also accepts an optional parameter to indicate how many decimal places to use (it defaults to 1):
+
+```
+{{ humanFileSize(1240547, 2) }}
 ```
 
 **ordinalize** - Converts number to its ordinal English form. For example, converts 13 to 13th, 2 to 2nd
@@ -155,7 +161,7 @@ Usage:
 Or:
 
 ```
-{{ 13 |craft.typogrify.ordinalize }}
+{{ craft.typogrify.ordinalize(13) }}
 ```
 
 **pluralize** - Converts a word to its plural form. For example, 'apple' will become 'apples', and 'child' will become 'children'
@@ -169,7 +175,7 @@ Usage:
 Or:
 
 ```
-{{ 'apple' |craft.typogrify.pluralize }}
+{{ craft.typogrify.pluralize('apple') }}
 ```
 
 **singularize** - Converts a word to its singular form. For example, 'apples' will become 'apple', and 'children' will become 'child'
@@ -183,7 +189,7 @@ Usage:
 Or:
 
 ```
-{{ 'children' |craft.typogrify.singularize }}
+{{ craft.typogrify.singularize('children') }}
 ```
 
 **transliterate** - Returns transliterated version of a string. For example, `获取到 どちら Українська: ґ,є, Српска: ђ, њ, џ! ¿Español?` will be transliterated to `huo qu dao dochira Ukrainsʹka: g,e, Srpska: d, n, d! ¿Espanol?`
@@ -206,7 +212,7 @@ Or:
 Or:
 
 ```
-{{ content |craft.typogrify.transliterate }}
+{{  craft.typogrify.transliterate(content) }}
 ```
 
 ## Advanced Usage

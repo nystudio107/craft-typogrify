@@ -13,6 +13,7 @@ namespace nystudio107\typogrify;
 use nystudio107\typogrify\services\TypogrifyService as TypogrifyService;
 use nystudio107\typogrify\twigextensions\TypogrifyTwigExtension;
 use nystudio107\typogrify\models\Settings;
+use nystudio107\typogrify\variables\TypogrifyVariable;
 
 use Craft;
 use craft\base\Plugin;
@@ -61,7 +62,7 @@ class Typogrify extends Plugin
             function (Event $event) {
                 /** @var CraftVariable $variable */
                 $variable = $event->sender;
-                $variable->set('typogrify', Typogrify::class);
+                $variable->set('typogrify', TypogrifyVariable::class);
             }
         );
 

@@ -40,6 +40,11 @@ class TypogrifyTwigExtension extends \Twig_Extension
         return [
             new \Twig_SimpleFilter('typogrify', [$this, 'typogrify']),
             new \Twig_SimpleFilter('smartypants', [$this, 'smartypants']),
+            new \Twig_SimpleFilter('humanFileSize', [$this, 'humanFileSize']),
+            new \Twig_SimpleFilter('ordinalize', [$this, 'ordinalize']),
+            new \Twig_SimpleFilter('pluralize', [$this, 'pluralize']),
+            new \Twig_SimpleFilter('singularize', [$this, 'singularize']),
+            new \Twig_SimpleFilter('transliterate', [$this, 'transliterate']),
         ];
     }
 
@@ -52,6 +57,11 @@ class TypogrifyTwigExtension extends \Twig_Extension
             new \Twig_SimpleFunction('typogrify', [$this, 'typogrify']),
             new \Twig_SimpleFunction('smartypants', [$this, 'smartypants']),
             new \Twig_SimpleFunction('getPhpTypography', [$this, 'getPhpTypography']),
+            new \Twig_SimpleFunction('humanFileSize', [$this, 'humanFileSize']),
+            new \Twig_SimpleFunction('ordinalize', [$this, 'ordinalize']),
+            new \Twig_SimpleFunction('pluralize', [$this, 'pluralize']),
+            new \Twig_SimpleFunction('singularize', [$this, 'singularize']),
+            new \Twig_SimpleFunction('transliterate', [$this, 'transliterate']),
         ];
     }
 
@@ -93,7 +103,7 @@ class TypogrifyTwigExtension extends \Twig_Extension
      *
      * @return \Twig_Markup
      */
-    public function humanFileSize($bytes, $decimals = 2)
+    public function humanFileSize($bytes, $decimals = 1)
     {
         return Template::raw(Typogrify::$plugin->typogrify->humanFileSize($bytes, $decimals));
     }
