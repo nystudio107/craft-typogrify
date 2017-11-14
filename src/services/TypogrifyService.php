@@ -110,7 +110,12 @@ class TypogrifyService extends Component
      */
     public function humanFileSize($bytes, $decimals = 1): string
     {
-        return Craft::$app->formatter->asShortSize($bytes, $decimals);
+        $oldSize = Craft::$app->formatter->sizeFormatBase;
+        Craft::$app->formatter->sizeFormatBase = 1000;
+        $result = Craft::$app->formatter->asShortSize($bytes, $decimals);
+        Craft::$app->formatter->sizeFormatBase = $oldSize;
+
+        return $result;
     }
 
     /**
