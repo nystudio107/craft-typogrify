@@ -110,7 +110,12 @@ class TypogrifyService extends Component
      */
     public function humanFileSize($bytes, $decimals = 1): string
     {
-        return Craft::$app->formatter->asShortSize($bytes, $decimals);
+        $oldSize = Craft::$app->formatter->sizeFormatBase;
+        Craft::$app->formatter->sizeFormatBase = 1000;
+        $result = Craft::$app->formatter->asShortSize($bytes, $decimals);
+        Craft::$app->formatter->sizeFormatBase = $oldSize;
+
+        return $result;
     }
 
     /**
@@ -179,12 +184,13 @@ class TypogrifyService extends Component
      * For example, 'apple' will become 'apples', and 'child' will become 'children'
      *
      * @param string $word
+     * @param int    $number
      *
      * @return string
      */
-    public function pluralize(string $word): string
+    public function pluralize(string $word, int $number = 2): string
     {
-        return Inflector::pluralize($word);
+        return abs($number) === 1 ? $word : Inflector::pluralize($word);
     }
 
     /**
@@ -192,12 +198,13 @@ class TypogrifyService extends Component
      * For example, 'apples' will become 'apple', and 'children' will become 'child'
      *
      * @param string $word
+     * @param int    $number
      *
      * @return string
      */
-    public function singularize(string $word): string
+    public function singularize(string $word, int $number = 1): string
     {
-        return Inflector::singularize($word);
+        return abs($number) === 1 ? Inflector::pluralize($word) : $word;
     }
 
     /**

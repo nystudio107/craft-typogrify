@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.1.2 - 2017-11-14
+### Changed
+* `singularize` and `pluralize` now both accept an optional `number` parameter
+* `humanFileSize` now defaults to `1000` as the unit of measure, with nicer looking human abbreviations
+
 ## 1.1.1 - 2017-11-06
 ### Added
 - Added `humanDuration()` and `humanRelativeTime()`

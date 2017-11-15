@@ -237,6 +237,23 @@ Or:
 {{ craft.typogrify.pluralize('apple') }}
 ```
 
+An optional number can be passed in as a second parameter, which will cause it to only pluralize the word if the number is not `1`. For example:
+
+
+```
+{% set numApples = 1 %}
+{{ 'apple' |pluralize(numApples) }}
+```
+
+Or:
+
+```
+{% set numApples = 1 %}
+{{ craft.typogrify.pluralize('apple', numApples) }}
+```
+
+In both examples, the number is `1` so the word would not be pluralized.
+ 
 **singularize** - Converts a word to its singular form. For example, 'apples' will become 'apple', and 'children' will become 'child'
 
 Usage:
@@ -250,6 +267,23 @@ Or:
 ```
 {{ craft.typogrify.singularize('children') }}
 ```
+
+An optional number can be passed in as a second parameter, which will cause it to only pluralize the word if the number is `1`. For example:
+
+
+```
+{% set numChildren = 2 %}
+{{ 'children' |singularize(numChildren) }}
+```
+
+Or:
+
+```
+{% set numChildren = 2 %}
+{{ craft.typogrify.singularize('children', numChildren) }}
+```
+
+In both examples, the number is `2` so the word would not be singularized.
 
 **transliterate** - Returns transliterated version of a string. For example, `获取到 どちら Українська: ґ,є, Српска: ђ, њ, џ! ¿Español?` will be transliterated to `huo qu dao dochira Ukrainsʹka: g,e, Srpska: d, n, d! ¿Espanol?`
 
