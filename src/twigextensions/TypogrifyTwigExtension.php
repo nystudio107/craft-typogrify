@@ -182,12 +182,13 @@ class TypogrifyTwigExtension extends \Twig_Extension
      * For example, 'apple' will become 'apples', and 'child' will become 'children'
      *
      * @param string $word
+     * @param int    $number
      *
      * @return \Twig_Markup
      */
-    public function pluralize(string $word)
+    public function pluralize(string $word, int $number = 2)
     {
-        return Template::raw(Typogrify::$plugin->typogrify->pluralize($word));
+        return Template::raw(Typogrify::$plugin->typogrify->pluralize($word, $number));
     }
 
     /**
@@ -195,12 +196,13 @@ class TypogrifyTwigExtension extends \Twig_Extension
      * For example, 'apples' will become 'apple', and 'children' will become 'child'
      *
      * @param string $word
+     * @param int    $number
      *
      * @return \Twig_Markup
      */
-    public function singularize(string $word)
+    public function singularize(string $word, int $number = 1)
     {
-        return Template::raw(Typogrify::$plugin->typogrify->singularize($word));
+        return Template::raw(Typogrify::$plugin->typogrify->singularize($word, $number));
     }
 
     /**
