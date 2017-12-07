@@ -193,6 +193,9 @@ Or:
 
 **stringy** - Returns a new [Stringy](https://github.com/danielstjules/Stringy) object to your templates, so you can access all of the advanced string manipulation that [Stringy](https://github.com/danielstjules/Stringy) has to offer.
 
+It does *not* strip HTML tags from the string, if you wish to do that, you can use the Twig [striptags](https://twig.symfony.com/doc/2.x/filters/striptags.html) filter.
+
+
 Usage:
 
 ```
