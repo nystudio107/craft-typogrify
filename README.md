@@ -143,6 +143,73 @@ Or:
 {{ craft.typogrify.smartypants(content) }}
 ```
 
+### Text Manipulation
+
+Typogrify provides a several text manipulation functions, and will also give you a full [Stringy](https://github.com/danielstjules/Stringy) object in your templates if you have advanced string manipulation needs.
+
+**truncate** - Truncates a string to a given length in a multi-byte friendly way.
+
+Usage:
+
+```
+{{ someString |truncate(20) }}
+```
+
+Or:
+
+```
+{{ craft.typogrify.truncate(someString, 20) }}
+```
+
+`truncate` also accepts an optional parameter that will be appended to the string if it is truncated (this defaults to '…'):
+
+```
+{{ truncate(someString, 20, '-') }}
+```
+
+**truncateOnWord** - Truncates a string to a given length in a multi-byte friendly way, while ensuring that it does not split words.
+
+Usage:
+
+```
+{{ someString |truncateOnWord(20) }}
+```
+
+Or:
+
+```
+{{ craft.typogrify.truncateOnWord(someString, 20) }}
+```
+
+`truncateOnWord` also accepts an optional parameter that will be appended to the string if it is truncated (this defaults to '…'):
+
+```
+{{ truncate(truncateOnWord, 20, '-') }}
+```
+
+**stringy** - Returns a new [Stringy](https://github.com/danielstjules/Stringy) object to your templates, so you can access all of the advanced string manipulation that [Stringy](https://github.com/danielstjules/Stringy) has to offer.
+
+Usage:
+
+```
+{% set someString = stringy('foobar') %}
+{{ someString.longestCommonPrefix('foobaz') }}
+```
+
+Or:
+
+```
+{% set someString = craft.typogrify.stringy('foobar') %}
+{{ someString.longestCommonPrefix('foobaz') }}
+```
+
+`stringy` also accepts an optional parameter allows you to specify the character encoding:
+
+```
+{% set someString = stringy('foobar', 'UTF-8') %}
+{{ someString.longestCommonPrefix('foobaz') }}
+```
+
 ### Human-Readable Formats
 
 Typogrify can output human-readable durations, relative times, and file sizes. These are all localized based on the current Craft site language.
