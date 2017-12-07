@@ -113,6 +113,7 @@ class TypogrifyService extends Component
         $result = $string;
 
         if (!empty($string)) {
+            $string = strip_tags($string);
             $result = (string)Stringy::create($string)->truncate($length, $substring);
         }
 
@@ -136,6 +137,7 @@ class TypogrifyService extends Component
         $result = $string;
 
         if (!empty($string)) {
+            $string = strip_tags($string);
             $result = (string)Stringy::create($string)->safeTruncate($length, $substring);
         }
 

@@ -147,7 +147,11 @@ Or:
 
 Typogrify provides a several text manipulation functions, and will also give you a full [Stringy](https://github.com/danielstjules/Stringy) object in your templates if you have advanced string manipulation needs.
 
-**truncate** - Truncates a string to a given length in a multi-byte friendly way.
+```
+{{ someString |striptags |truncate(20) }}
+```
+
+**truncate** - Truncates a string to a given length in a multi-byte friendly way. It first strips any HTML tags from the string before performing truncation.
 
 Usage:
 
@@ -167,7 +171,7 @@ Or:
 {{ truncate(someString, 20, '-') }}
 ```
 
-**truncateOnWord** - Truncates a string to a given length in a multi-byte friendly way, while ensuring that it does not split words.
+**truncateOnWord** - Truncates a string to a given length in a multi-byte friendly way, while ensuring that it does not split words. It first strips any HTML tags from the string before performing truncation.
 
 Usage:
 
