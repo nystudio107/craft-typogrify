@@ -6,7 +6,7 @@ Typogrify prettifies your web typography by preventing ugly quotes and 'widows' 
 
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0-beta.23 or later.
+This plugin requires Craft CMS 3.0.0-RC1 or later.
 
 ## Installation
 
