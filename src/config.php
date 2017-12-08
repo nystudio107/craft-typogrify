@@ -146,6 +146,9 @@ return [
     // units and values are kept together with insertion of &nbsp;
     "set_unit_spacing" => true,
 
+    // Enables/disables extra whitespace before certain punction marks, as is the French custom.
+    "set_french_punctuation_spacing" => false,
+
     // a list of units to keep with their values
     "set_units" => [
     ],

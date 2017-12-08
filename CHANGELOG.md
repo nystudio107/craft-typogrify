@@ -1,5 +1,8 @@
 # Typogrify Changelog
 
+## 1.1.4 - 2017.12.08
+### Changed
+* Set `set_french_punctuation_spacing` to `false` by default to avoid spaces before punctuation
 
 ## 1.1.3 - 2017.12.06
 ### Added
