@@ -53,7 +53,7 @@ class Typogrify extends Plugin
         parent::init();
         self::$plugin = $this;
 
-        Craft::$app->view->twig->addExtension(new TypogrifyTwigExtension());
+        Craft::$app->view->registerTwigExtension(new TypogrifyTwigExtension());
 
         // Register our variables
         Event::on(

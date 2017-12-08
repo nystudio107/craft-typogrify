@@ -14,6 +14,8 @@ use nystudio107\typogrify\Typogrify;
 
 use craft\helpers\Template;
 
+use Stringy\Stringy;
+
 /**
  * @author    nystudio107
  * @package   Typogrify
@@ -51,6 +53,56 @@ class TypogrifyVariable
     public function getPhpTypographySettings()
     {
         return Typogrify::$plugin->typogrify->phpTypographySettings;
+    }
+
+    /**
+     * Truncates the string to a given length. If $substring is provided, and
+     * truncating occurs, the string is further truncated so that the substring
+     * may be appended without exceeding the desired length.
+     *
+     * @param  string $string    The string to truncate
+     * @param  int    $length    Desired length of the truncated string
+     * @param  string $substring The substring to append if it can fit
+     *
+     * @return string with the resulting $str after truncating
+     */
+    public function truncate($string, $length, $substring = '…'): string
+    {
+        return Template::raw(Typogrify::$plugin->typogrify->truncate($string, $length, $substring));
+    }
+
+    /**
+     * Truncates the string to a given length, while ensuring that it does not
+     * split words. If $substring is provided, and truncating occurs, the
+     * string is further truncated so that the substring may be appended without
+     * exceeding the desired length.
+     *
+     * @param  string $string    The string to truncate
+     * @param  int    $length    Desired length of the truncated string
+     * @param  string $substring The substring to append if it can fit
+     *
+     * @return string with the resulting $str after truncating
+     */
+    public function truncateOnWord($string, $length, $substring = '…'): string
+    {
+        return Template::raw(Typogrify::$plugin->typogrify->truncateOnWord($string, $length, $substring));
+    }
+
+    /**
+     * Creates a Stringy object and assigns both string and encoding properties
+     * the supplied values. $string is cast to a string prior to assignment, and if
+     * $encoding is not specified, it defaults to mb_internal_encoding(). It
+     * then returns the initialized object. Throws an InvalidArgumentException
+     * if the first argument is an array or object without a __toString method.
+     *
+     * @param  string $string   The string initialize the Stringy object with
+     * @param  string $encoding The character encoding
+     *
+     * @return Stringy
+     */
+    public function stringy($string = '', $encoding = null)
+    {
+        return Typogrify::$plugin->typogrify->stringy($string, $encoding);
     }
 
     /**

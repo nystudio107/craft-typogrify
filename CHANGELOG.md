@@ -1,6 +1,13 @@
 # Typogrify Changelog
 
-All notable changes to this project will be documented in this file.
+
+## 1.1.3 - 2017.12.06
+### Added
+* Added `truncate`, `truncateOnWord`, and `stringy` text manipulation functions
+
+### Changed
+* Updated to require craftcms/cms `^3.0.0-RC1`
+* Switched to `Craft::$app->view->registerTwigExtension` to register the Twig extension
 
 ## 1.1.2 - 2017-11-14
 ### Changed

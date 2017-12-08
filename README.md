@@ -6,7 +6,7 @@ Typogrify prettifies your web typography by preventing ugly quotes and 'widows' 
 
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0-beta.23 or later.
+This plugin requires Craft CMS 3.0.0-RC1 or later.
 
 ## Installation
 
@@ -141,6 +141,80 @@ Or:
 
 ```
 {{ craft.typogrify.smartypants(content) }}
+```
+
+### Text Manipulation
+
+Typogrify provides a several text manipulation functions, and will also give you a full [Stringy](https://github.com/danielstjules/Stringy) object in your templates if you have advanced string manipulation needs.
+
+```
+{{ someString |striptags |truncate(20) }}
+```
+
+**truncate** - Truncates a string to a given length in a multi-byte friendly way. It first strips any HTML tags from the string before performing truncation.
+
+Usage:
+
+```
+{{ someString |truncate(20) }}
+```
+
+Or:
+
+```
+{{ craft.typogrify.truncate(someString, 20) }}
+```
+
+`truncate` also accepts an optional parameter that will be appended to the string if it is truncated (this defaults to '…'):
+
+```
+{{ truncate(someString, 20, '-') }}
+```
+
+**truncateOnWord** - Truncates a string to a given length in a multi-byte friendly way, while ensuring that it does not split words. It first strips any HTML tags from the string before performing truncation.
+
+Usage:
+
+```
+{{ someString |truncateOnWord(20) }}
+```
+
+Or:
+
+```
+{{ craft.typogrify.truncateOnWord(someString, 20) }}
+```
+
+`truncateOnWord` also accepts an optional parameter that will be appended to the string if it is truncated (this defaults to '…'):
+
+```
+{{ truncate(truncateOnWord, 20, '-') }}
+```
+
+**stringy** - Returns a new [Stringy](https://github.com/danielstjules/Stringy) object to your templates, so you can access all of the advanced string manipulation that [Stringy](https://github.com/danielstjules/Stringy) has to offer.
+
+It does *not* strip HTML tags from the string, if you wish to do that, you can use the Twig [striptags](https://twig.symfony.com/doc/2.x/filters/striptags.html) filter.
+
+
+Usage:
+
+```
+{% set someString = stringy('foobar') %}
+{{ someString.longestCommonPrefix('foobaz') }}
+```
+
+Or:
+
+```
+{% set someString = craft.typogrify.stringy('foobar') %}
+{{ someString.longestCommonPrefix('foobaz') }}
+```
+
+`stringy` also accepts an optional parameter allows you to specify the character encoding:
+
+```
+{% set someString = stringy('foobar', 'UTF-8') %}
+{{ someString.longestCommonPrefix('foobaz') }}
 ```
 
 ### Human-Readable Formats
