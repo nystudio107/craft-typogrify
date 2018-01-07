@@ -2,7 +2,7 @@
     "name": "nystudio107/craft3-typogrify",
     "description": "Typogrify prettifies your web typography by preventing ugly quotes and 'widows' and more",
     "type": "craft-plugin",
-    "version": "1.1.4",
+    "version": "1.1.5",
     "keywords": [
         "craft",
         "cms",
@@ -26,7 +26,7 @@
     "require": {
         "craftcms/cms": "^3.0.0-RC1",
         "michelf/php-smartypants": "^1.8",
-        "mundschenk-at/php-typography": "^5.2"
+        "mundschenk-at/php-typography": "^6.0"
     },
     "repositories": [
         {
