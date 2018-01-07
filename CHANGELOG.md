@@ -1,5 +1,9 @@
 # Typogrify Changelog
 
+## 1.1.5 - 2018.01.06
+### Changed
+* Updated to `php-typography` ^6.0.0
+
 ## 1.1.4 - 2017.12.08
 ### Changed
 * Set `set_french_punctuation_spacing` to `false` by default to avoid spaces before punctuation
