@@ -41,6 +41,7 @@ class TypogrifyTwigExtension extends \Twig_Extension
     {
         return [
             new \Twig_SimpleFilter('typogrify', [$this, 'typogrify']),
+            new \Twig_SimpleFilter('typogrifyFeed', [$this, 'typogrifyFeed']),
             new \Twig_SimpleFilter('smartypants', [$this, 'smartypants']),
             new \Twig_SimpleFilter('truncate', [$this, 'truncate']),
             new \Twig_SimpleFilter('truncateOnWord', [$this, 'truncateOnWord']),
@@ -62,6 +63,7 @@ class TypogrifyTwigExtension extends \Twig_Extension
     {
         return [
             new \Twig_SimpleFunction('typogrify', [$this, 'typogrify']),
+            new \Twig_SimpleFunction('typogrifyFeed', [$this, 'typogrifyFeed']),
             new \Twig_SimpleFunction('smartypants', [$this, 'smartypants']),
             new \Twig_SimpleFunction('getPhpTypography', [$this, 'getPhpTypography']),
             new \Twig_SimpleFunction('truncate', [$this, 'truncate']),
@@ -78,14 +80,35 @@ class TypogrifyTwigExtension extends \Twig_Extension
     }
 
     /**
-     * @param string $text
+     * Typogrify applies a veritable kitchen sink of typographic treatments to
+     * beautify your web typography
      *
-     * @return \Twig_Markup
+     * @param string $text    The text or HTML fragment to process
+     * @param bool   $isTitle Optional. If the HTML fragment is a title.
+     *                        Default false
      *
+     * @return string The processed HTML
      */
-    public function typogrify($text)
+    public function typogrify($text, $isTitle = false)
     {
-        return Template::raw(Typogrify::$plugin->typogrify->typogrify($text));
+        return Template::raw(Typogrify::$plugin->typogrify->typogrify($text, $isTitle));
+    }
+
+    /**
+     * Typogrify applies a veritable kitchen sink of typographic treatments to
+     * beautify your web typography but in a way that is appropriate for RSS
+     * (or similar) feeds -- i.e. excluding processes that may cause issues in
+     * contexts with limited character set intelligence.
+     *
+     * @param string $text    The text or HTML fragment to process
+     * @param bool   $isTitle Optional. If the HTML fragment is a title.
+     *                        Default false
+     *
+     * @return string The processed HTML
+     */
+    public function typogrifyFeed($text, $isTitle = false)
+    {
+        return Template::raw(Typogrify::$plugin->typogrify->typogrifyFeed($text, $isTitle));
     }
 
     /**

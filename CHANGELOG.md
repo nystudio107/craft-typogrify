@@ -1,5 +1,13 @@
 # Typogrify Changelog
 
+## 1.1.6 - 2018.01.21
+### Added
+* Added the `typogrifyFeed` filter/function for RSS feeds
+* Added an optional `isTitle` (defauling to `false`) for the `typogrify` filter
+
+### Changed
+* Code comments/cleanup
+
 ## 1.1.5 - 2018.01.06
 ### Changed
 * Updated to `php-typography` ^6.0.0

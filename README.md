@@ -57,6 +57,11 @@ Usage:
 ```
 
 Or:
+```
+{{  typogrify(content) }}
+```
+
+Or:
 
 ```
 {% filter typogrify %}
@@ -71,6 +76,7 @@ Or:
 {{ craft.typogrify.typogrify(content) }}
 ```
 
+There is also an optional second parameter `isTitle` (which defaults to `false`) to give Typogrify a hint as to whether the entity that is being passed in is a title or not. This allows it to not hyphenate titles, for instance, depending on the `set_hyphenate_headings` config setting (see below).
 
 So what does it actually do? Well, a lot:
 
@@ -94,6 +100,34 @@ So what does it actually do? Well, a lot:
     -   initial quotes & guillemets.
 
 ...and more. If you don't like the default behavior, you can enable, disable, or change any of the settings via the `config.php` file. See the **Configuring Typogrify** section for details.
+
+For RSS feeds, there is an additional `typogrifyFeed` filter/function that applies all of the same typogrify treatments, but in a way that is appropriate for RSS (or similar) feeds — i.e. excluding processes that may cause issues in contexts with limited character set intelligence.
+
+Usage:
+
+```
+{{ content |typogrifyFeed }}
+```
+
+Or:
+```
+{{  typogrifyFeed(content) }}
+```
+
+Or:
+
+```
+{% filter typogrifyFeed %}
+    <p>Your text here</p>
+{% endfilter %}
+
+```
+
+Or:
+
+```
+{{ craft.typogrify.typogrifyFeed(content) }}
+```
 
 #### Advanced Usage
 
