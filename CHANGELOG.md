@@ -3,7 +3,7 @@
 ## 1.1.6 - 2018.01.21
 ### Added
 * Added the `typogrifyFeed` filter/function for RSS feeds
-* Added an optional `isTitle` (defauling to `false`) for the `typogrify` filter
+* Added an optional `isTitle` (defaulting to `false`) for the `typogrify` filter
 
 ### Changed
 * Code comments/cleanup
