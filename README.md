@@ -18,7 +18,7 @@ To install the plugin, follow these instructions.
 
 2. Then tell Composer to require the plugin:
 
-        composer require nystudio107/craft3-typogrify
+        composer require nystudio107/craft-typogrify
 
 3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Typogrify.
 
