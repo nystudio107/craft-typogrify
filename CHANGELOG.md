@@ -1,5 +1,9 @@
 # Typogrify Changelog
 
+## 1.1.7 - 2018.02.01
+### Added
+* Renamed the composer package name to `craft-typogrify`
+
 ## 1.1.6 - 2018.01.21
 ### Added
 * Added the `typogrifyFeed` filter/function for RSS feeds
