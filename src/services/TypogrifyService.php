@@ -78,13 +78,14 @@ class TypogrifyService extends Component
      *
      * @return string The processed HTML
      */
-    public function typogrify($text, $isTitle = false)
+    public function typogrify($text, $isTitle = false, $deWidow = true)
     {
         if (empty($text)) {
             return '';
         }
-
+        $this->phpTypographySettings->set_dewidow($deWidow);
         $result = $this->phpTypography->process($text, $this->phpTypographySettings, $isTitle);
+        $this->phpTypographySettings->set_dewidow(true);
 
         return $result;
     }
