@@ -89,9 +89,9 @@ class TypogrifyTwigExtension extends \Twig_Extension
      *
      * @return string The processed HTML
      */
-    public function typogrify($text, $isTitle = false)
+    public function typogrify($text, $isTitle = false, $deWidow = true)
     {
-        return Template::raw(Typogrify::$plugin->typogrify->typogrify($text, $isTitle));
+        return Template::raw(Typogrify::$plugin->typogrify->typogrify($text, $isTitle, $deWidow));
     }
 
     /**
