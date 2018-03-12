@@ -65,7 +65,7 @@ class TypogrifyTwigExtension extends \Twig_Extension
             new \Twig_SimpleFunction('typogrify', [$this, 'typogrify']),
             new \Twig_SimpleFunction('typogrifyFeed', [$this, 'typogrifyFeed']),
             new \Twig_SimpleFunction('smartypants', [$this, 'smartypants']),
-            new \Twig_SimpleFunction('getPhpTypography', [$this, 'getPhpTypography']),
+            new \Twig_SimpleFunction('getPhpTypographySettings', [$this, 'getPhpTypographySettings']),
             new \Twig_SimpleFunction('truncate', [$this, 'truncate']),
             new \Twig_SimpleFunction('truncateOnWord', [$this, 'truncateOnWord']),
             new \Twig_SimpleFunction('stringy', [$this, 'stringy']),
