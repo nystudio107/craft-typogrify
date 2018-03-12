@@ -1,5 +1,9 @@
 # Typogrify Changelog
 
+## 1.1.8 - 2018.03.12
+### Added
+* Fix the `getPhpTypographySettings()` Twig function to be named correctly
+
 ## 1.1.7 - 2018.02.01
 ### Added
 * Renamed the composer package name to `craft-typogrify`
