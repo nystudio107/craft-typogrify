@@ -1,4 +1,4 @@
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/badges/quality-score.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/?branch=v1)[![Code Coverage](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/badges/coverage.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/?branch=v1)[![Build Status](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/badges/build.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/build-status/v1)[![Code Intelligence Status](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/badges/code-intelligence.svg?b=v1)](https://scrutinizer-ci.com/code-intelligence)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/badges/quality-score.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/?branch=v1) [![Code Coverage](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/badges/coverage.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/?branch=v1) [![Build Status](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/badges/build.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/build-status/v1) [![Code Intelligence Status](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/badges/code-intelligence.svg?b=v1)](https://scrutinizer-ci.com/code-intelligence)
 
 # Typogrify plugin for Craft CMS 3.x
 
@@ -23,6 +23,8 @@ To install the plugin, follow these instructions.
         composer require nystudio107/craft-typogrify
 
 3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Typogrify.
+
+You can also install Typogrify via the **Plugin Store** in the Craft AdminCP.
 
 ## Typogrify Overview
 
