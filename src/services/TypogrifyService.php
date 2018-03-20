@@ -337,7 +337,7 @@ class TypogrifyService extends Component
      */
     public function singularize(string $word, int $number = 1): string
     {
-        return abs($number) === 1 ? Inflector::pluralize($word) : $word;
+        return abs($number) === 1 ? Inflector::singularize($word) : $word;
     }
 
     /**

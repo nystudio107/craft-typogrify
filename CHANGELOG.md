@@ -1,5 +1,9 @@
 # Typogrify Changelog
 
+## 1.1.9 - 2018.03.20
+### Changed
+* Fixed the `singularize` service method to properly singularize words
+
 ## 1.1.8 - 2018.03.12
 ### Added
 * Fix the `getPhpTypographySettings()` Twig function to be named correctly
