@@ -277,6 +277,13 @@ class Settings extends Model
     public $set_max_dewidow_length = 5;
 
     /**
+     * establishes the maximum number of words considered for dewidowing.
+     *
+     * @var int
+     */
+    public $set_dewidow_word_number = 1;
+
+    /**
      * establishes maximum length of pulled text to keep widows company
      *
      * @var int
@@ -459,6 +466,7 @@ class Settings extends Model
             [
                 [
                     'set_max_dewidow_length',
+                    'set_dewidow_word_number',
                     'set_max_dewidow_pull',
                     'set_min_after_url_wrap',
                     'set_min_length_hyphenation',
