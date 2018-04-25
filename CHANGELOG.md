@@ -1,5 +1,9 @@
 # Typogrify Changelog
 
+## 1.1.10 - 2018.04.25
+### Added
+* Added the ability to set the the maximum number of words considered for dewidowing
+
 ## 1.1.9 - 2018.03.20
 ### Changed
 * Fixed the `singularize` service method to properly singularize words
