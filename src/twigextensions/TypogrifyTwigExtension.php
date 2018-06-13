@@ -53,6 +53,7 @@ class TypogrifyTwigExtension extends \Twig_Extension
             new \Twig_SimpleFilter('pluralize', [$this, 'pluralize']),
             new \Twig_SimpleFilter('singularize', [$this, 'singularize']),
             new \Twig_SimpleFilter('transliterate', [$this, 'transliterate']),
+            new \Twig_SimpleFilter('wordLimit', [$this, 'wordLimit']),
         ];
     }
 
@@ -76,6 +77,7 @@ class TypogrifyTwigExtension extends \Twig_Extension
             new \Twig_SimpleFunction('pluralize', [$this, 'pluralize']),
             new \Twig_SimpleFunction('singularize', [$this, 'singularize']),
             new \Twig_SimpleFunction('transliterate', [$this, 'transliterate']),
+            new \Twig_SimpleFunction('wordLimit', [$this, 'wordLimit']),
         ];
     }
 
@@ -299,5 +301,21 @@ class TypogrifyTwigExtension extends \Twig_Extension
     public function transliterate(string $string, $transliterator = null)
     {
         return Template::raw(Typogrify::$plugin->typogrify->transliterate($string, $transliterator));
+    }
+
+    /**
+     * Limits a string by word count. If $substring is provided, and truncating occurs, the
+     * string is further truncated so that the substring may be appended without
+     * exceeding the desired length.
+     *
+     * @param string $string
+     * @param int    $length
+     * @param string $substring
+     *
+     * @return string
+     */
+    public function wordLimit(string $string, int $length, string $substring = '…')
+    {
+        return Template::raw(Typogrify::$plugin->typogrify->wordLimit($string, $length, $substring));
     }
 }

@@ -1,5 +1,9 @@
 # Typogrify Changelog
 
+## 1.1.11 - 2018.06.12
+### Added
+* Added `wordLimit` Twig filter/function that truncates a string by the number of words to a given length
+
 ## 1.1.10 - 2018.04.25
 ### Added
 * Added the ability to set the the maximum number of words considered for dewidowing
