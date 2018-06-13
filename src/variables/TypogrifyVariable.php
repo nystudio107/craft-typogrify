@@ -245,4 +245,20 @@ class TypogrifyVariable
     {
         return Template::raw(Typogrify::$plugin->typogrify->transliterate($string, $transliterator));
     }
+
+    /**
+     * Limits a string by word count. If $substring is provided, and truncating occurs, the
+     * string is further truncated so that the substring may be appended without
+     * exceeding the desired length.
+     *
+     * @param string $string
+     * @param int    $length
+     * @param string $substring
+     *
+     * @return string
+     */
+    public function wordLimit(string $string, int $length, string $substring = '…')
+    {
+        return Template::raw(Typogrify::$plugin->typogrify->wordLimit($string, $length, $substring));
+    }
 }

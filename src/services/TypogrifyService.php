@@ -355,4 +355,21 @@ class TypogrifyService extends Component
     {
         return Inflector::transliterate($string, $transliterator);
     }
+
+     /**
+     * Limits a string by word count. If $substring is provided, and truncating occurs, the
+     * string is further truncated so that the substring may be appended without
+     * exceeding the desired length.
+     *
+     * @param string $string
+     * @param int    $length
+     * @param string $substring
+     *
+     * @return string
+     */
+    public function wordLimit(string $string, int $length, string $substring = '…'): string
+    {
+        $words = preg_split("/[\s]+/", strip_tags($string) );
+        return implode(" ", array_slice($words, 0, $length) ) . $substring;
+    }
 }
