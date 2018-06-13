@@ -229,6 +229,26 @@ Or:
 {{ truncate(truncateOnWord, 20, '-') }}
 ```
 
+**wordLimit** - Truncates a string by the number of words to a given length. It first strips any HTML tags from the string before performing truncation.
+
+Usage:
+
+```
+{{ someString |wordLimit(20) }}
+```
+
+Or:
+
+```
+{{ craft.typogrify.wordLimit(someString, 20) }}
+```
+
+`wordLimit` also accepts an optional parameter that will be appended to the string if it is truncated (this defaults to '…'):
+
+```
+{{ wordLimit(someString, 20, '-') }}
+```
+
 **stringy** - Returns a new [Stringy](https://github.com/danielstjules/Stringy) object to your templates, so you can access all of the advanced string manipulation that [Stringy](https://github.com/danielstjules/Stringy) has to offer.
 
 It does *not* strip HTML tags from the string, if you wish to do that, you can use the Twig [striptags](https://twig.symfony.com/doc/2.x/filters/striptags.html) filter.
@@ -365,7 +385,7 @@ Or:
 ```
 
 In both examples, the number is `1` so the word would not be pluralized.
- 
+
 **singularize** - Converts a word to its singular form. For example, 'apples' will become 'apple', and 'children' will become 'child'
 
 Usage:
