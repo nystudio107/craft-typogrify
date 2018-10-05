@@ -1,5 +1,9 @@
 # Typogrify Changelog
 
+## 1.1.12 - 2018.10.04
+### Added
+* Fixed an issue where Typogrify could return a `\Twig_Markup` from unsafe input
+ 
 ## 1.1.11 - 2018.06.12
 ### Added
 * Added `wordLimit` Twig filter/function that truncates a string by the number of words to a given length
