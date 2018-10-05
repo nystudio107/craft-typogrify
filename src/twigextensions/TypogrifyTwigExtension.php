@@ -89,7 +89,7 @@ class TypogrifyTwigExtension extends \Twig_Extension
      * @param bool   $isTitle Optional. If the HTML fragment is a title.
      *                        Default false
      *
-     * @return string The processed HTML
+     * @return string|\Twig_Markup
      */
     public function typogrify($text, $isTitle = false)
     {
@@ -106,7 +106,7 @@ class TypogrifyTwigExtension extends \Twig_Extension
      * @param bool   $isTitle Optional. If the HTML fragment is a title.
      *                        Default false
      *
-     * @return string The processed HTML
+     * @return string|\Twig_Markup
      */
     public function typogrifyFeed($text, $isTitle = false)
     {
@@ -116,7 +116,7 @@ class TypogrifyTwigExtension extends \Twig_Extension
     /**
      * @param string $text
      *
-     * @return \Twig_Markup
+     * @return string|\Twig_Markup
      */
     public function smartypants($text)
     {
