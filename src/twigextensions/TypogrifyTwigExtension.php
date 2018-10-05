@@ -89,11 +89,11 @@ class TypogrifyTwigExtension extends \Twig_Extension
      * @param bool   $isTitle Optional. If the HTML fragment is a title.
      *                        Default false
      *
-     * @return string|\Twig_Markup
+     * @return string The processed HTML
      */
     public function typogrify($text, $isTitle = false)
     {
-        return $this->returnText($text, Typogrify::$plugin->typogrify->typogrify($text, $isTitle));
+        return Template::raw(Typogrify::$plugin->typogrify->typogrify($text, $isTitle));
     }
 
     /**
@@ -106,21 +106,21 @@ class TypogrifyTwigExtension extends \Twig_Extension
      * @param bool   $isTitle Optional. If the HTML fragment is a title.
      *                        Default false
      *
-     * @return string|\Twig_Markup
+     * @return string The processed HTML
      */
     public function typogrifyFeed($text, $isTitle = false)
     {
-        return $this->returnText($text, Typogrify::$plugin->typogrify->typogrifyFeed($text, $isTitle));
+        return Template::raw(Typogrify::$plugin->typogrify->typogrifyFeed($text, $isTitle));
     }
 
     /**
      * @param string $text
      *
-     * @return string|\Twig_Markup
+     * @return \Twig_Markup
      */
     public function smartypants($text)
     {
-        return $this->returnText($text, Typogrify::$plugin->typogrify->smartypants($text));
+        return Template::raw(Typogrify::$plugin->typogrify->smartypants($text));
     }
 
     /**
@@ -144,7 +144,7 @@ class TypogrifyTwigExtension extends \Twig_Extension
      */
     public function truncate($string, $length, $substring = '…'): string
     {
-        return Typogrify::$plugin->typogrify->truncate($string, $length, $substring);
+        return Template::raw(Typogrify::$plugin->typogrify->truncate($string, $length, $substring));
     }
 
     /**
@@ -161,7 +161,7 @@ class TypogrifyTwigExtension extends \Twig_Extension
      */
     public function truncateOnWord($string, $length, $substring = '…'): string
     {
-        return Typogrify::$plugin->typogrify->truncateOnWord($string, $length, $substring);
+        return Template::raw(Typogrify::$plugin->typogrify->truncateOnWord($string, $length, $substring));
     }
 
     /**
@@ -196,7 +196,7 @@ class TypogrifyTwigExtension extends \Twig_Extension
      */
     public function humanFileSize($bytes, $decimals = 1): string
     {
-        return Typogrify::$plugin->typogrify->humanFileSize($bytes, $decimals);
+        return Template::raw(Typogrify::$plugin->typogrify->humanFileSize($bytes, $decimals));
     }
 
     /**
@@ -216,7 +216,7 @@ class TypogrifyTwigExtension extends \Twig_Extension
      */
     public function humanDuration($value)
     {
-        return Typogrify::$plugin->typogrify->humanDuration($value);
+        return Template::raw(Typogrify::$plugin->typogrify->humanDuration($value));
     }
 
     /**
@@ -244,7 +244,7 @@ class TypogrifyTwigExtension extends \Twig_Extension
      */
     public function humanRelativeTime($value, $referenceTime = null)
     {
-        return Typogrify::$plugin->typogrify->humanRelativeTime($value, $referenceTime);
+        return Template::raw(Typogrify::$plugin->typogrify->humanRelativeTime($value, $referenceTime));
     }
 
     /**
@@ -253,11 +253,11 @@ class TypogrifyTwigExtension extends \Twig_Extension
      *
      * @param int $number
      *
-     * @return string
+     * @return \Twig_Markup
      */
     public function ordinalize(int $number)
     {
-        return Typogrify::$plugin->typogrify->ordinalize($number);
+        return Template::raw(Typogrify::$plugin->typogrify->ordinalize($number));
     }
 
     /**
@@ -267,11 +267,11 @@ class TypogrifyTwigExtension extends \Twig_Extension
      * @param string $word
      * @param int    $number
      *
-     * @return string
+     * @return \Twig_Markup
      */
     public function pluralize(string $word, int $number = 2)
     {
-        return Typogrify::$plugin->typogrify->pluralize($word, $number);
+        return Template::raw(Typogrify::$plugin->typogrify->pluralize($word, $number));
     }
 
     /**
@@ -281,11 +281,11 @@ class TypogrifyTwigExtension extends \Twig_Extension
      * @param string $word
      * @param int    $number
      *
-     * @return string
+     * @return \Twig_Markup
      */
     public function singularize(string $word, int $number = 1)
     {
-        return Typogrify::$plugin->typogrify->singularize($word, $number);
+        return Template::raw(Typogrify::$plugin->typogrify->singularize($word, $number));
     }
 
     /**
@@ -296,11 +296,11 @@ class TypogrifyTwigExtension extends \Twig_Extension
      * @param string $string
      * @param null   $transliterator
      *
-     * @return string
+     * @return \Twig_Markup
      */
     public function transliterate(string $string, $transliterator = null)
     {
-        return Typogrify::$plugin->typogrify->transliterate($string, $transliterator);
+        return Template::raw(Typogrify::$plugin->typogrify->transliterate($string, $transliterator));
     }
 
     /**
@@ -316,27 +316,6 @@ class TypogrifyTwigExtension extends \Twig_Extension
      */
     public function wordLimit(string $string, int $length, string $substring = '…')
     {
-        return Typogrify::$plugin->typogrify->wordLimit($string, $length, $substring);
-    }
-
-    // Private Methods
-    // =========================================================================
-
-    /**
-     * Return the text as \Twig_Markup if that's what was passed in, otherwise
-     * just return a string
-     *
-     * @param $original
-     * @param $text
-     *
-     * @return string|\Twig_Markup
-     */
-    private function returnText($original, string $text)
-    {
-        if ($original instanceof \Twig_Markup) {
-            return Template::raw($text);
-        }
-
-        return $text;
+        return Template::raw(Typogrify::$plugin->typogrify->wordLimit($string, $length, $substring));
     }
 }

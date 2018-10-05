@@ -133,6 +133,14 @@ Or:
 {{ craft.typogrify.typogrifyFeed(content) }}
 ```
 
+#### Security
+
+In ordered to work, Typogrify outputs raw HTML. Any untrusted user input should therefor be [escaped](https://twig.symfony.com/doc/2.x/filters/escape.html) before passing it into the `typogrify` filter, e.g.:
+
+```twig
+{{ craft.request.getParam('q') | escape | typogrify }}
+```
+
 #### Advanced Usage
 
 Should you need advanced control over Typogrify in your templates, you can use the `getPhpTypographySettings()` Twig function:

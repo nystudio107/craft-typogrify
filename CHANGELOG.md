@@ -1,5 +1,9 @@
 # Typogrify Changelog
 
+## 1.1.13 - 2018.10.05
+### Changed
+* Reverted `\Twig_Markup` regression; added a note to the docs
+
 ## 1.1.12 - 2018.10.04
 ### Changed
 * Fixed an issue where Typogrify could return a `\Twig_Markup` from unsafe input
