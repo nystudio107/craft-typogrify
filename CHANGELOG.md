@@ -1,5 +1,10 @@
 # Typogrify Changelog
 
+## 1.1.14 - 2018.10.05
+### Changed
+* Refactored the Twig Extension to use the same methods that the Variable does
+* Normalize text passed in by escaping untrusted strings
+
 ## 1.1.13 - 2018.10.05
 ### Changed
 * Reverted `\Twig_Markup` regression; added a note to the docs
