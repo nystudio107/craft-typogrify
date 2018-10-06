@@ -12,6 +12,7 @@ namespace nystudio107\typogrify\variables;
 
 use nystudio107\typogrify\Typogrify;
 
+use Craft;
 use craft\helpers\Template;
 
 use Stringy\Stringy;
@@ -34,10 +35,11 @@ class TypogrifyVariable
      * @param bool   $isTitle Optional. If the HTML fragment is a title.
      *                        Default false
      *
-     * @return string The processed HTML
+     * @return \Twig_Markup
      */
-    public function typogrify($text, $isTitle = false)
+    public function typogrify($text, $isTitle = false): \Twig_Markup
     {
+        $text = $this->normalizeText($text);
         return Template::raw(Typogrify::$plugin->typogrify->typogrify($text, $isTitle));
     }
 
@@ -51,10 +53,11 @@ class TypogrifyVariable
      * @param bool   $isTitle Optional. If the HTML fragment is a title.
      *                        Default false
      *
-     * @return string The processed HTML
+     * @return \Twig_Markup
      */
-    public function typogrifyFeed($text, $isTitle = false)
+    public function typogrifyFeed($text, $isTitle = false): \Twig_Markup
     {
+        $text = $this->normalizeText($text);
         return Template::raw(Typogrify::$plugin->typogrify->typogrifyFeed($text, $isTitle));
     }
 
@@ -63,15 +66,16 @@ class TypogrifyVariable
      *
      * @return \Twig_Markup
      */
-    public function smartypants($text)
+    public function smartypants($text): \Twig_Markup
     {
+        $text = $this->normalizeText($text);
         return Template::raw(Typogrify::$plugin->typogrify->smartypants($text));
     }
 
     /**
      * @return \PHP_Typography\Settings
      */
-    public function getPhpTypographySettings()
+    public function getPhpTypographySettings(): \PHP_Typography\Settings
     {
         return Typogrify::$plugin->typogrify->phpTypographySettings;
     }
@@ -89,7 +93,7 @@ class TypogrifyVariable
      */
     public function truncate($string, $length, $substring = '…'): string
     {
-        return Template::raw(Typogrify::$plugin->typogrify->truncate($string, $length, $substring));
+        return Typogrify::$plugin->typogrify->truncate($string, $length, $substring);
     }
 
     /**
@@ -106,7 +110,7 @@ class TypogrifyVariable
      */
     public function truncateOnWord($string, $length, $substring = '…'): string
     {
-        return Template::raw(Typogrify::$plugin->typogrify->truncateOnWord($string, $length, $substring));
+        return Typogrify::$plugin->typogrify->truncateOnWord($string, $length, $substring);
     }
 
     /**
@@ -121,7 +125,7 @@ class TypogrifyVariable
      *
      * @return Stringy
      */
-    public function stringy($string = '', $encoding = null)
+    public function stringy($string = '', $encoding = null): Stringy
     {
         return Typogrify::$plugin->typogrify->stringy($string, $encoding);
     }
@@ -141,7 +145,7 @@ class TypogrifyVariable
      */
     public function humanFileSize($bytes, $decimals = 1): string
     {
-        return Template::raw(Typogrify::$plugin->typogrify->humanFileSize($bytes, $decimals));
+        return Typogrify::$plugin->typogrify->humanFileSize($bytes, $decimals);
     }
 
     /**
@@ -159,9 +163,9 @@ class TypogrifyVariable
      *
      * @return string the formatted duration.
      */
-    public function humanDuration($value)
+    public function humanDuration($value): string
     {
-        return Template::raw(Typogrify::$plugin->typogrify->humanDuration($value));
+        return Typogrify::$plugin->typogrify->humanDuration($value);
     }
 
     /**
@@ -187,9 +191,9 @@ class TypogrifyVariable
      *
      * @return string the formatted result.
      */
-    public function humanRelativeTime($value, $referenceTime = null)
+    public function humanRelativeTime($value, $referenceTime = null): string
     {
-        return Template::raw(Typogrify::$plugin->typogrify->humanRelativeTime($value, $referenceTime));
+        return Typogrify::$plugin->typogrify->humanRelativeTime($value, $referenceTime);
     }
 
     /**
@@ -198,11 +202,11 @@ class TypogrifyVariable
      *
      * @param int $number
      *
-     * @return \Twig_Markup
+     * @return string
      */
-    public function ordinalize(int $number)
+    public function ordinalize(int $number): string
     {
-        return Template::raw(Typogrify::$plugin->typogrify->ordinalize($number));
+        return Typogrify::$plugin->typogrify->ordinalize($number);
     }
 
     /**
@@ -211,11 +215,11 @@ class TypogrifyVariable
      *
      * @param string $word
      *
-     * @return \Twig_Markup
+     * @return string
      */
-    public function pluralize(string $word)
+    public function pluralize(string $word): string
     {
-        return Template::raw(Typogrify::$plugin->typogrify->pluralize($word));
+        return Typogrify::$plugin->typogrify->pluralize($word);
     }
 
     /**
@@ -224,11 +228,11 @@ class TypogrifyVariable
      *
      * @param string $word
      *
-     * @return \Twig_Markup
+     * @return string
      */
-    public function singularize(string $word)
+    public function singularize(string $word): string
     {
-        return Template::raw(Typogrify::$plugin->typogrify->singularize($word));
+        return Typogrify::$plugin->typogrify->singularize($word);
     }
 
     /**
@@ -239,11 +243,11 @@ class TypogrifyVariable
      * @param string $string
      * @param null   $transliterator
      *
-     * @return \Twig_Markup
+     * @return string
      */
-    public function transliterate(string $string, $transliterator = null)
+    public function transliterate(string $string, $transliterator = null): string
     {
-        return Template::raw(Typogrify::$plugin->typogrify->transliterate($string, $transliterator));
+        return Typogrify::$plugin->typogrify->transliterate($string, $transliterator);
     }
 
     /**
@@ -257,8 +261,39 @@ class TypogrifyVariable
      *
      * @return string
      */
-    public function wordLimit(string $string, int $length, string $substring = '…')
+    public function wordLimit(string $string, int $length, string $substring = '…'): string
     {
-        return Template::raw(Typogrify::$plugin->typogrify->wordLimit($string, $length, $substring));
+        return Typogrify::$plugin->typogrify->wordLimit($string, $length, $substring);
+    }
+
+    // Private Methods
+    // =========================================================================
+
+    /**
+     * Normalize the passed in text to ensure that untrusted strings are escaped
+     *
+     * @param $text
+     *
+     * @return string
+     */
+    private function normalizeText($text): string
+    {
+        if ($text instanceof \Twig_Markup) {
+            // Either came from a Redactor field (or the like) or they manually added a |raw tag. We can trust it
+            $text = (string)$text;
+        } else {
+            // We don't trust it, so escape any HTML
+            $twig = Craft::$app->view->twig;
+            try {
+                $text = twig_escape_filter($twig, $text);
+            } catch (\Twig_Error_Runtime $e) {
+                $error = $e->getMessage();
+                Craft::error($error, __METHOD__);
+                // We don't want unescaped text slipping through, so set the text to the error message
+                $text = $error;
+            }
+        }
+
+        return $text;
     }
 }
