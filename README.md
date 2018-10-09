@@ -135,15 +135,11 @@ Or:
 
 #### Security
 
-In ordered to work, Typogrify outputs raw HTML. Any untrusted string (anything that is not `\Twig_Markup`), is escaped before processing to avoid any potential XSS.
-
-Data coming from Rich Text Fields will already be `\Twig_Markup` so HTML therein will not be escaped; if you have data coming from another source that you don't want escaped prior to using `| typogrify`, use the `raw` filter:
+In ordered to work, Typogrify outputs raw HTML. Any untrusted string coming from user input, etc. should be escaped _before_ passing it into Typogrify, e.g.:
 
 ```twig
-{{ someText | raw | typogrify }}
+{{ craft.request.getParam('untrusted') | escape | typogrify }}
 ```
-
-This is only needed if you have HTML that needs to be preserved coming from a Plain Text or other trusted source. For most uses cases, this is unnecessary.
 
 #### Advanced Usage
 

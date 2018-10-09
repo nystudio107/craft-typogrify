@@ -278,6 +278,7 @@ class TypogrifyVariable
      */
     private function normalizeText($text): string
     {
+/* @TODO: try to resolve at a later date; Twig's `| raw` just returns a string, not `\Twig_Markup` so we can't use that as a check
         if ($text instanceof \Twig_Markup) {
             // Either came from a Redactor field (or the like) or they manually added a |raw tag. We can trust it
             $text = (string)$text;
@@ -293,6 +294,12 @@ class TypogrifyVariable
                 $text = $error;
             }
         }
+*/
+        // If it's null or otherwise empty, just return an empty string
+        if (empty($text)) {
+            $text = '';
+        }
+        $text = (string)$text;
 
         return $text;
     }
