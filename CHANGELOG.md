@@ -3,6 +3,7 @@
 ## 1.1.15 - 2018.10.09
 ### Changed
 * Allow `null` to be passed in to the various filters
+* Once again, revert to not auto-escaping text that is passed in
 
 ## 1.1.14 - 2018.10.05
 ### Changed
