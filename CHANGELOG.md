@@ -1,5 +1,9 @@
 # Typogrify Changelog
 
+## 1.1.15 - 2018.10.09
+### Changed
+* Allow `null` to be passed in to the various filters
+
 ## 1.1.14 - 2018.10.05
 ### Changed
 * Refactored the Twig Extension to use the same methods that the Variable does
