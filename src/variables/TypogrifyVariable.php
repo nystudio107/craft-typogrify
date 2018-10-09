@@ -293,6 +293,10 @@ class TypogrifyVariable
                 $text = $error;
             }
         }
+        // If it's null or otherwise empty, just return an empty string
+        if (empty($text)) {
+            $text = '';
+        }
 
         return $text;
     }
