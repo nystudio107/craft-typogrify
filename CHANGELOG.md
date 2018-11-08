@@ -1,5 +1,9 @@
 # Typogrify Changelog
 
+## 1.1.16 - 2018.11.08
+### Changed
+* Fixed an issue with `pluralize` and `singularize` not respecting the `$number` passed in
+
 ## 1.1.15 - 2018.10.09
 ### Changed
 * Allow `null` to be passed in to the various filters

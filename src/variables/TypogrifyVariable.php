@@ -214,12 +214,13 @@ class TypogrifyVariable
      * For example, 'apple' will become 'apples', and 'child' will become 'children'
      *
      * @param string $word
+     * @param int    $number
      *
      * @return string
      */
-    public function pluralize(string $word): string
+    public function pluralize(string $word, int $number = 2): string
     {
-        return Typogrify::$plugin->typogrify->pluralize($word);
+        return Typogrify::$plugin->typogrify->pluralize($word, $number);
     }
 
     /**
@@ -227,12 +228,13 @@ class TypogrifyVariable
      * For example, 'apples' will become 'apple', and 'children' will become 'child'
      *
      * @param string $word
+     * @param int    $number
      *
      * @return string
      */
-    public function singularize(string $word): string
+    public function singularize(string $word, int $number = 1): string
     {
-        return Typogrify::$plugin->typogrify->singularize($word);
+        return Typogrify::$plugin->typogrify->singularize($word, $number);
     }
 
     /**
