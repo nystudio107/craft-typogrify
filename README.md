@@ -80,7 +80,17 @@ Or:
 {{ craft.typogrify.typogrify(content) }}
 ```
 
-There is also an optional second parameter `isTitle` (which defaults to `false`) to give Typogrify a hint as to whether the entity that is being passed in is a title or not. This allows it to not hyphenate titles, for instance, depending on the `set_hyphenate_headings` config setting (see below).
+There is also an optional second parameter `isTitle` (which defaults to `false`) to give Typogrify a hint as to whether the entity that is being passed in is a title or not. This allows it to not hyphenate titles, for instance, depending on the `set_hyphenate_headings` config setting (see below). Examples:
+
+```
+{{ content |typogrify(true) }}
+```
+
+Or:
+```
+{{  typogrify(content, true) }}
+```
+
 
 So what does it actually do? Well, a lot:
 
