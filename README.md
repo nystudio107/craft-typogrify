@@ -151,6 +151,8 @@ In ordered to work, Typogrify outputs raw HTML. Any untrusted string coming from
 {{ craft.request.getParam('untrusted') | escape | typogrify }}
 ```
 
+There is also a `config.php` setting called `default_escape` that will by default auto-escape all text passed in to the `typogrify` filter.
+
 #### Advanced Usage
 
 Should you need advanced control over Typogrify in your templates, you can use the `getPhpTypographySettings()` Twig function:
