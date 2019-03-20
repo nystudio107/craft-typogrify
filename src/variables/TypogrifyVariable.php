@@ -303,6 +303,13 @@ class TypogrifyVariable
         }
         $text = (string)$text;
 
+        $settings = Typogrify::$plugin->getSettings();
+
+        if ($settings['default_escape'] === true) {
+            $twig = Craft::$app->view->twig;
+            $text = twig_escape_filter($twig, $text);
+        }
+
         return $text;
     }
 }
