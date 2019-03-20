@@ -1,5 +1,9 @@
 # Typogrify Changelog
 
+## 1.1.17 - 2019.03.20
+### Changed
+* Fixed an issue where `wordLimit` always appended the ellipsis, regardless of whether truncation happened or not
+
 ## 1.1.16 - 2018.11.08
 ### Changed
 * Fixed an issue with `pluralize` and `singularize` not respecting the `$number` passed in
