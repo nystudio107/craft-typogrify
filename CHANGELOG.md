@@ -3,6 +3,7 @@
 ## 1.1.17 - 2019.03.20
 ### Changed
 * Fixed an issue where `wordLimit` always appended the ellipsis, regardless of whether truncation happened or not
+* Allow for escaping inputs by default
 
 ## 1.1.16 - 2018.11.08
 ### Changed
