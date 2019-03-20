@@ -63,7 +63,9 @@ class TypogrifyService extends Component
         if ($settings !== false) {
             $settingsArray = $settings->toArray();
             foreach ($settingsArray as $key => $value) {
-                $this->phpTypographySettings->{$key}($value);
+                if ($key !== 'default_escape') {
+                    $this->phpTypographySettings->{$key}($value);
+                }
             }
         }
     }
@@ -356,10 +358,10 @@ class TypogrifyService extends Component
         return Inflector::transliterate($string, $transliterator);
     }
 
-     /**
-     * Limits a string by word count. If $substring is provided, and truncating occurs, the
-     * string is further truncated so that the substring may be appended without
-     * exceeding the desired length.
+    /**
+     * Limits a string by word count. If $substring is provided, and truncating
+     * occurs, the string is further truncated so that the substring may be
+     * appended without exceeding the desired length.
      *
      * @param string $string
      * @param int    $length
@@ -369,7 +371,9 @@ class TypogrifyService extends Component
      */
     public function wordLimit(string $string, int $length, string $substring = '…'): string
     {
-        $words = preg_split("/[\s]+/", strip_tags($string) );
-        return implode(" ", array_slice($words, 0, $length) ) . $substring;
+        $words = preg_split("/[\s]+/", strip_tags($string));
+        $result = implode(' ', array_slice($words, 0, $length));
+
+        return count($words) > $length ? $result.$substring : $result;
     }
 }
