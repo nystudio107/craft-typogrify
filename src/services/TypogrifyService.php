@@ -63,7 +63,9 @@ class TypogrifyService extends Component
         if ($settings !== false) {
             $settingsArray = $settings->toArray();
             foreach ($settingsArray as $key => $value) {
-                $this->phpTypographySettings->{$key}($value);
+                if ($key !== 'default_escape') {
+                    $this->phpTypographySettings->{$key}($value);
+                }
             }
         }
     }

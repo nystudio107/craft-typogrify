@@ -27,6 +27,13 @@ class Settings extends Model
     // =========================================================================
 
     /**
+     * sets whether input should be escaped by default
+     *
+     * @var boolean
+     */
+    public $default_escape = false;
+
+    /**
      * sets tags where typography of children will be untouched
      *
      * @var array

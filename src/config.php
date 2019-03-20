@@ -26,6 +26,9 @@ use \PHP_Typography\Settings\Quote_Style;
  */
 
 return [
+    // sets whether input should be escaped by default
+    "default_escape" => false,
+
     // sets tags where typography of children will be untouched
     "set_tags_to_ignore" => [
         "code",
