@@ -371,7 +371,7 @@ class TypogrifyService extends Component
      */
     public function wordLimit(string $string, int $length, string $substring = '…'): string
     {
-        $words = preg_split("/[\s]+/", strip_tags($string));
+        $words = preg_split("/[\s]+/u", strip_tags($string));
         $result = implode(' ', array_slice($words, 0, $length));
 
         return count($words) > $length ? $result.$substring : $result;
