@@ -137,7 +137,7 @@ return [
     // replaces 1/4  with <sup>1</sup>&#8260;<sub>4</sub>
     "set_smart_fractions" => true,
 
-    // wrap numbers in <span class="numbers">
+    // Enables/disables replacement of 1st with 1<sup>st</sup>
     "set_smart_ordinal_suffix" => true,
 
     // single character words are forced to next line with insertion of &nbsp;
