@@ -1,5 +1,10 @@
 # Typogrify Changelog
 
+## 1.1.18 - 2019.04.30
+### Changed
+* Fixed an issue where `wordLimit` turns "à" characters into "�"
+* Updated Twig namespacing to be compliant with deprecated class aliases in 2.7.x
+
 ## 1.1.17 - 2019.03.20
 ### Changed
 * Fixed an issue where `wordLimit` always appended the ellipsis, regardless of whether truncation happened or not

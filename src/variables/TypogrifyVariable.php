@@ -15,6 +15,8 @@ use nystudio107\typogrify\Typogrify;
 use Craft;
 use craft\helpers\Template;
 
+use Twig\Markup;
+
 use Stringy\Stringy;
 
 /**
@@ -35,9 +37,9 @@ class TypogrifyVariable
      * @param bool   $isTitle Optional. If the HTML fragment is a title.
      *                        Default false
      *
-     * @return \Twig_Markup
+     * @return Markup
      */
-    public function typogrify($text, $isTitle = false): \Twig_Markup
+    public function typogrify($text, $isTitle = false): Markup
     {
         $text = $this->normalizeText($text);
         return Template::raw(Typogrify::$plugin->typogrify->typogrify($text, $isTitle));
@@ -53,9 +55,9 @@ class TypogrifyVariable
      * @param bool   $isTitle Optional. If the HTML fragment is a title.
      *                        Default false
      *
-     * @return \Twig_Markup
+     * @return Markup
      */
-    public function typogrifyFeed($text, $isTitle = false): \Twig_Markup
+    public function typogrifyFeed($text, $isTitle = false): Markup
     {
         $text = $this->normalizeText($text);
         return Template::raw(Typogrify::$plugin->typogrify->typogrifyFeed($text, $isTitle));
@@ -64,9 +66,9 @@ class TypogrifyVariable
     /**
      * @param string $text
      *
-     * @return \Twig_Markup
+     * @return Markup
      */
-    public function smartypants($text): \Twig_Markup
+    public function smartypants($text): Markup
     {
         $text = $this->normalizeText($text);
         return Template::raw(Typogrify::$plugin->typogrify->smartypants($text));
@@ -280,8 +282,8 @@ class TypogrifyVariable
      */
     private function normalizeText($text): string
     {
-/* @TODO: try to resolve at a later date; Twig's `| raw` just returns a string, not `\Twig_Markup` so we can't use that as a check
-        if ($text instanceof \Twig_Markup) {
+/* @TODO: try to resolve at a later date; Twig's `| raw` just returns a string, not `Markup` so we can't use that as a check
+        if ($text instanceof Markup) {
             // Either came from a Redactor field (or the like) or they manually added a |raw tag. We can trust it
             $text = (string)$text;
         } else {

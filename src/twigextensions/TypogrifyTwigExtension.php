@@ -12,12 +12,16 @@ namespace nystudio107\typogrify\twigextensions;
 
 use nystudio107\typogrify\Typogrify;
 
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
+use Twig\TwigFunction;
+
 /**
  * @author    nystudio107
  * @package   Typogrify
  * @since     1.0.0
  */
-class TypogrifyTwigExtension extends \Twig_Extension
+class TypogrifyTwigExtension extends AbstractExtension
 {
     // Public Methods
     // =========================================================================
@@ -37,20 +41,20 @@ class TypogrifyTwigExtension extends \Twig_Extension
     {
         $variable = Typogrify::$variable;
         return [
-            new \Twig_SimpleFilter('typogrify', [$variable, 'typogrify']),
-            new \Twig_SimpleFilter('typogrifyFeed', [$variable, 'typogrifyFeed']),
-            new \Twig_SimpleFilter('smartypants', [$variable, 'smartypants']),
-            new \Twig_SimpleFilter('truncate', [$variable, 'truncate']),
-            new \Twig_SimpleFilter('truncateOnWord', [$variable, 'truncateOnWord']),
-            new \Twig_SimpleFilter('stringy', [$variable, 'stringy']),
-            new \Twig_SimpleFilter('humanFileSize', [$variable, 'humanFileSize']),
-            new \Twig_SimpleFilter('humanDuration', [$variable, 'humanDuration']),
-            new \Twig_SimpleFilter('humanRelativeTime', [$variable, 'humanRelativeTime']),
-            new \Twig_SimpleFilter('ordinalize', [$variable, 'ordinalize']),
-            new \Twig_SimpleFilter('pluralize', [$variable, 'pluralize']),
-            new \Twig_SimpleFilter('singularize', [$variable, 'singularize']),
-            new \Twig_SimpleFilter('transliterate', [$variable, 'transliterate']),
-            new \Twig_SimpleFilter('wordLimit', [$variable, 'wordLimit']),
+            new TwigFilter('typogrify', [$variable, 'typogrify']),
+            new TwigFilter('typogrifyFeed', [$variable, 'typogrifyFeed']),
+            new TwigFilter('smartypants', [$variable, 'smartypants']),
+            new TwigFilter('truncate', [$variable, 'truncate']),
+            new TwigFilter('truncateOnWord', [$variable, 'truncateOnWord']),
+            new TwigFilter('stringy', [$variable, 'stringy']),
+            new TwigFilter('humanFileSize', [$variable, 'humanFileSize']),
+            new TwigFilter('humanDuration', [$variable, 'humanDuration']),
+            new TwigFilter('humanRelativeTime', [$variable, 'humanRelativeTime']),
+            new TwigFilter('ordinalize', [$variable, 'ordinalize']),
+            new TwigFilter('pluralize', [$variable, 'pluralize']),
+            new TwigFilter('singularize', [$variable, 'singularize']),
+            new TwigFilter('transliterate', [$variable, 'transliterate']),
+            new TwigFilter('wordLimit', [$variable, 'wordLimit']),
         ];
     }
 
@@ -61,21 +65,21 @@ class TypogrifyTwigExtension extends \Twig_Extension
     {
         $variable = Typogrify::$variable;
         return [
-            new \Twig_SimpleFunction('typogrify', [$variable, 'typogrify']),
-            new \Twig_SimpleFunction('typogrifyFeed', [$variable, 'typogrifyFeed']),
-            new \Twig_SimpleFunction('smartypants', [$variable, 'smartypants']),
-            new \Twig_SimpleFunction('getPhpTypographySettings', [$variable, 'getPhpTypographySettings']),
-            new \Twig_SimpleFunction('truncate', [$variable, 'truncate']),
-            new \Twig_SimpleFunction('truncateOnWord', [$variable, 'truncateOnWord']),
-            new \Twig_SimpleFunction('stringy', [$variable, 'stringy']),
-            new \Twig_SimpleFunction('humanFileSize', [$variable, 'humanFileSize']),
-            new \Twig_SimpleFunction('humanDuration', [$variable, 'humanDuration']),
-            new \Twig_SimpleFunction('humanRelativeTime', [$variable, 'humanRelativeTime']),
-            new \Twig_SimpleFunction('ordinalize', [$variable, 'ordinalize']),
-            new \Twig_SimpleFunction('pluralize', [$variable, 'pluralize']),
-            new \Twig_SimpleFunction('singularize', [$variable, 'singularize']),
-            new \Twig_SimpleFunction('transliterate', [$variable, 'transliterate']),
-            new \Twig_SimpleFunction('wordLimit', [$variable, 'wordLimit']),
+            new TwigFunction('typogrify', [$variable, 'typogrify']),
+            new TwigFunction('typogrifyFeed', [$variable, 'typogrifyFeed']),
+            new TwigFunction('smartypants', [$variable, 'smartypants']),
+            new TwigFunction('getPhpTypographySettings', [$variable, 'getPhpTypographySettings']),
+            new TwigFunction('truncate', [$variable, 'truncate']),
+            new TwigFunction('truncateOnWord', [$variable, 'truncateOnWord']),
+            new TwigFunction('stringy', [$variable, 'stringy']),
+            new TwigFunction('humanFileSize', [$variable, 'humanFileSize']),
+            new TwigFunction('humanDuration', [$variable, 'humanDuration']),
+            new TwigFunction('humanRelativeTime', [$variable, 'humanRelativeTime']),
+            new TwigFunction('ordinalize', [$variable, 'ordinalize']),
+            new TwigFunction('pluralize', [$variable, 'pluralize']),
+            new TwigFunction('singularize', [$variable, 'singularize']),
+            new TwigFunction('transliterate', [$variable, 'transliterate']),
+            new TwigFunction('wordLimit', [$variable, 'wordLimit']),
         ];
     }
 }
