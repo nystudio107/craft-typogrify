@@ -206,7 +206,7 @@ class Settings extends Model
     public $set_smart_fractions = true;
 
     /**
-     * wrap numbers in <span class="numbers">
+     * Enables/disables replacement of 1st with 1<sup>st</sup>
      *
      * @var bool
      */
