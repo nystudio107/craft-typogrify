@@ -11,8 +11,8 @@
         "typogrify"
     ],
     "support": {
-        "docs": "https://github.com/nystudio107/craft-typogrify/blob/v1/README.md",
-        "issues": "https://github.com/nystudio107/craft-typogrify/issues"
+        "docs": "https://nystudio107.com/plugins/typogrify/documentation",
+        "issues": "https://nystudio107.com/plugins/typogrify/support"
     },
     "license": "MIT",
     "authors": [
