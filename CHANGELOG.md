@@ -1,5 +1,11 @@
 # Typogrify Changelog
 
+## 4.0.0-beta.1 - 2022.02.22
+
+### Added
+
+* Initial Craft CMS 4 compatibility
+
 ## 1.1.19 - 2022.02.22
 ### Added
 
