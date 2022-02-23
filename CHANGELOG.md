@@ -1,5 +1,16 @@
 # Typogrify Changelog
 
+## 1.1.19 - 2022.02.22
+### Added
+
+* Add `.gitattributes` & `CODEOWNERS`
+
+### Changed
+
+* Switched documentation system to VitePress
+* Use Textlint for the documentation
+* Build documentation automatically via GitHub action
+
 ## 1.1.18 - 2019.04.30
 ### Changed
 * Fixed an issue where `wordLimit` turns "à" characters into "�"

@@ -1,54 +1,48 @@
 {
-    "name": "nystudio107/craft-typogrify",
-    "description": "Typogrify prettifies your web typography by preventing ugly quotes and 'widows' and more",
-    "type": "craft-plugin",
-    "version": "1.1.18",
-    "keywords": [
-        "craft",
-        "cms",
-        "craftcms",
-        "craft-plugin",
-        "typogrify"
-    ],
-    "support": {
-        "docs": "https://nystudio107.com/plugins/typogrify/documentation",
-        "issues": "https://nystudio107.com/plugins/typogrify/support"
-    },
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "nystudio107",
-            "homepage": "https://nystudio107.com/"
-        }
-    ],
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "require": {
-        "craftcms/cms": "^3.0.0",
-        "michelf/php-smartypants": "^1.8",
-        "mundschenk-at/php-typography": "^6.0"
-    },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://asset-packagist.org"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-          "nystudio107\\typogrify\\": "src/"
-        }
-    },
-    "extra": {
-        "name": "Typogrify",
-        "handle": "typogrify",
-        "schemaVersion": "1.0.0",
-        "hasCpSettings": false,
-        "hasCpSection": false,
-        "changelogUrl": "https://raw.githubusercontent.com/nystudio107/craft-typogrify/v1/CHANGELOG.md",
-        "components": {
-            "typogrify": "nystudio107\\typogrify\\services\\TypogrifyService"
-        },
-        "class": "nystudio107\\typogrify\\Typogrify"
+  "name": "nystudio107/craft-typogrify",
+  "description": "Typogrify prettifies your web typography by preventing ugly quotes and 'widows' and more",
+  "type": "craft-plugin",
+  "version": "1.1.19",
+  "keywords": [
+    "craft",
+    "cms",
+    "craftcms",
+    "craft-plugin",
+    "typogrify"
+  ],
+  "support": {
+    "docs": "https://nystudio107.com/plugins/typogrify/documentation",
+    "issues": "https://nystudio107.com/plugins/typogrify/support"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "nystudio107",
+      "homepage": "https://nystudio107.com/"
     }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "craftcms/cms": "^3.0.0",
+    "michelf/php-smartypants": "^1.8",
+    "mundschenk-at/php-typography": "^6.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "nystudio107\\typogrify\\": "src/"
+    }
+  },
+  "extra": {
+    "name": "Typogrify",
+    "handle": "typogrify",
+    "schemaVersion": "1.0.0",
+    "hasCpSettings": false,
+    "hasCpSection": false,
+    "changelogUrl": "https://raw.githubusercontent.com/nystudio107/craft-typogrify/v1/CHANGELOG.md",
+    "components": {
+      "typogrify": "nystudio107\\typogrify\\services\\TypogrifyService"
+    },
+    "class": "nystudio107\\typogrify\\Typogrify"
+  }
 }
