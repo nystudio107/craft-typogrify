@@ -10,11 +10,10 @@
 
 namespace nystudio107\typogrify\models;
 
-use \PHP_Typography\Settings\Dash_Style;
-use \PHP_Typography\Settings\Quote_Style;
-
 use craft\base\Model;
 use craft\validators\ArrayValidator;
+use PHP_Typography\Settings\Dash_Style;
+use PHP_Typography\Settings\Quote_Style;
 
 /**
  * @author    nystudio107
@@ -29,16 +28,16 @@ class Settings extends Model
     /**
      * sets whether input should be escaped by default
      *
-     * @var boolean
+     * @var bool
      */
-    public $default_escape = false;
+    public bool $default_escape = false;
 
     /**
      * sets tags where typography of children will be untouched
      *
      * @var array
      */
-    public $set_tags_to_ignore = [
+    public array $set_tags_to_ignore = [
         "code",
         "head",
         "kbd",
@@ -62,7 +61,7 @@ class Settings extends Model
      *
      * @var array
      */
-    public $set_classes_to_ignore = [
+    public array $set_classes_to_ignore = [
         "vcard",
         "noTypo"
     ];
@@ -72,7 +71,7 @@ class Settings extends Model
      *
      * @var array
      */
-    public $set_ids_to_ignore = [
+    public array $set_ids_to_ignore = [
     ];
 
     /**
@@ -80,7 +79,7 @@ class Settings extends Model
      *
      * @var bool
      */
-    public $set_smart_quotes = true;
+    public bool $set_smart_quotes = true;
 
     /**
      * Primary quotemarks style
@@ -103,7 +102,7 @@ class Settings extends Model
      *
      * @var string
      */
-    public $set_smart_quotes_primary = Quote_Style::DOUBLE_CURLED;
+    public string $set_smart_quotes_primary = Quote_Style::DOUBLE_CURLED;
 
     /**
      * Secondary quotemarks style
@@ -126,14 +125,14 @@ class Settings extends Model
      *
      * @var string
      */
-    public $set_smart_quotes_secondary = Quote_Style::SINGLE_CURLED;
+    public string $set_smart_quotes_secondary = Quote_Style::SINGLE_CURLED;
 
     /**
      * replaces "a--a" with En Dash " -- " and "---" with Em Dash
      *
      * @var bool
      */
-    public $set_smart_dashes = true;
+    public bool $set_smart_dashes = true;
 
     /**
      * Sets the typographical conventions used by smart_dashes.
@@ -144,28 +143,28 @@ class Settings extends Model
      *
      * @var string
      */
-    public $set_smart_dashes_style = Dash_Style::TRADITIONAL_US;
+    public string $set_smart_dashes_style = Dash_Style::TRADITIONAL_US;
 
     /**
      * replaces "..." with "…"
      *
      * @var bool
      */
-    public $set_smart_ellipses = true;
+    public bool $set_smart_ellipses = true;
 
     /**
      * replaces "creme brulee" with "crème brûlée"
      *
      * @var bool
      */
-    public $set_smart_diacritics = true;
+    public bool $set_smart_diacritics = true;
 
     /**
      * defines hyphenation language for text
      *
      * @var string
      */
-    public $set_diacritic_language = "en-US";
+    public string $set_diacritic_language = "en-US";
 
     /**
      * $customReplacements must be
@@ -174,7 +173,7 @@ class Settings extends Model
      *
      * @var array
      */
-    public $set_diacritic_custom_replacements = [
+    public array $set_diacritic_custom_replacements = [
     ];
 
     /**
@@ -182,70 +181,70 @@ class Settings extends Model
      *
      * @var bool
      */
-    public $set_smart_marks = true;
+    public bool $set_smart_marks = true;
 
     /**
      * replaces 1*4 with 1x4, etc.
      *
      * @var bool
      */
-    public $set_smart_math = true;
+    public bool $set_smart_math = true;
 
     /**
      * replaces 2^4 with 2<sup>4</sup>
      *
      * @var bool
      */
-    public $set_smart_exponents = true;
+    public bool $set_smart_exponents = true;
 
     /**
      * replaces 1/4  with <sup>1</sup>&#8260;<sub>4</sub>
      *
      * @var bool
      */
-    public $set_smart_fractions = true;
+    public bool $set_smart_fractions = true;
 
     /**
      * Enables/disables replacement of 1st with 1<sup>st</sup>
      *
      * @var bool
      */
-    public $set_smart_ordinal_suffix = true;
+    public bool $set_smart_ordinal_suffix = true;
 
     /**
      * single character words are forced to next line with insertion of &nbsp;
      *
      * @var bool
      */
-    public $set_single_character_word_spacing = true;
+    public bool $set_single_character_word_spacing = true;
 
     /**
      * fractions are kept together with insertion of &nbsp;
      *
      * @var bool
      */
-    public $set_fraction_spacing = true;
+    public bool $set_fraction_spacing = true;
 
     /**
      * units and values are kept together with insertion of &nbsp;
      *
      * @var bool
      */
-    public $set_unit_spacing = true;
+    public bool $set_unit_spacing = true;
 
     /**
      * Enables/disables extra whitespace before certain punction marks, as is the French custom.
      *
      * @param bool
      */
-    public $set_french_punctuation_spacing = false;
+    public bool $set_french_punctuation_spacing = false;
 
     /**
      * a list of units to keep with their values
      *
      * @var array
      */
-    public $set_units = [
+    public array $set_units = [
     ];
 
     /**
@@ -253,112 +252,112 @@ class Settings extends Model
      *
      * @var bool
      */
-    public $set_dash_spacing = true;
+    public bool $set_dash_spacing = true;
 
     /**
      * Remove extra space characters
      *
      * @var bool
      */
-    public $set_space_collapse = true;
+    public bool $set_space_collapse = true;
 
     /**
      * Enable usage of true "no-break narrow space" (&#8239;) instead of the normal no-break space (&nbsp;).
      *
      * @var bool
      */
-    public $set_true_no_break_narrow_space = false;
+    public bool $set_true_no_break_narrow_space = false;
 
     /**
      * enables widow handling
      *
      * @var bool
      */
-    public $set_dewidow = true;
+    public bool $set_dewidow = true;
 
     /**
      * establishes maximum length of a widows that will be protected
      *
      * @var int
      */
-    public $set_max_dewidow_length = 5;
+    public int $set_max_dewidow_length = 5;
 
     /**
      * establishes the maximum number of words considered for dewidowing.
      *
      * @var int
      */
-    public $set_dewidow_word_number = 1;
+    public int $set_dewidow_word_number = 1;
 
     /**
      * establishes maximum length of pulled text to keep widows company
      *
      * @var int
      */
-    public $set_max_dewidow_pull = 5;
+    public int $set_max_dewidow_pull = 5;
 
     /**
      * enables wrapping at hard hyphens internal to a word with the insertion of a zero-width-space
      *
      * @var bool
      */
-    public $set_wrap_hard_hyphens = true;
+    public bool $set_wrap_hard_hyphens = true;
 
     /**
      * enables wrapping of urls
      *
      * @var bool
      */
-    public $set_url_wrap = true;
+    public bool $set_url_wrap = true;
 
     /**
      * enables wrapping of email addresses
      *
      * @var bool
      */
-    public $set_email_wrap = true;
+    public bool $set_email_wrap = true;
 
     /**
      * establishes minimum character requirement after a url wrapping point
      *
      * @var int
      */
-    public $set_min_after_url_wrap = 5;
+    public int $set_min_after_url_wrap = 5;
 
     /**
      * wrap ampersands in <span class="amp">
      *
      * @var bool
      */
-    public $set_style_ampersands = true;
+    public bool $set_style_ampersands = true;
 
     /**
      * wrap caps in <span class="caps">
      *
      * @var bool
      */
-    public $set_style_caps = true;
+    public bool $set_style_caps = true;
 
     /**
      * wrap initial quotes in <span class="quo"> or <span class="dquo">
      *
      * @var bool
      */
-    public $set_style_initial_quotes = true;
+    public bool $set_style_initial_quotes = true;
 
     /**
      * wrap numbers in <span class="numbers">
      *
      * @var bool
      */
-    public $set_style_numbers = true;
+    public bool $set_style_numbers = true;
 
     /**
      * sets tags where initial quotes and guillemets should be styled
      *
      * @var array
      */
-    public $set_initial_quote_tags = [
+    public array $set_initial_quote_tags = [
         "p",
         "h1",
         "h2",
@@ -377,56 +376,56 @@ class Settings extends Model
      *
      * @var bool
      */
-    public $set_hyphenation = true;
+    public bool $set_hyphenation = true;
 
     /**
      * defines hyphenation language for text
      *
      * @var string
      */
-    public $set_hyphenation_language = "en-US";
+    public string $set_hyphenation_language = "en-US";
 
     /**
      * establishes minimum length of a word that may be hyphenated
      *
      * @var int
      */
-    public $set_min_length_hyphenation = 5;
+    public int $set_min_length_hyphenation = 5;
 
     /**
      * establishes minimum character requirement before a hyphenation point
      *
      * @var int
      */
-    public $set_min_before_hyphenation = 3;
+    public int $set_min_before_hyphenation = 3;
 
     /**
      * establishes minimum character requirement after a hyphenation point
      *
      * @var int
      */
-    public $set_min_after_hyphenation = 2;
+    public int $set_min_after_hyphenation = 2;
 
     /**
      * allows/disallows hyphenation of title/heading text
      *
      * @var bool
      */
-    public $set_hyphenate_headings = true;
+    public bool $set_hyphenate_headings = true;
 
     /**
      * allows hyphenation of strings of all capital characters
      *
      * @var bool
      */
-    public $set_hyphenate_all_caps = true;
+    public bool $set_hyphenate_all_caps = true;
 
     /**
      * allows hyphenation of strings of all capital characters
      *
      * @var bool
      */
-    public $set_hyphenate_title_case = true;
+    public bool $set_hyphenate_title_case = true;
 
     /**
      * defines custom word hyphenations
@@ -434,7 +433,7 @@ class Settings extends Model
      *
      * @var array
      */
-    public $set_hyphenation_exceptions = [
+    public array $set_hyphenation_exceptions = [
     ];
 
     /**
@@ -442,7 +441,7 @@ class Settings extends Model
      *
      * @var bool
      */
-    public $set_ignore_parser_errors = true;
+    public bool $set_ignore_parser_errors = true;
 
     /**
      * Sets an optional handler for parser errors. Invalid callbacks will be silently ignored
@@ -457,7 +456,7 @@ class Settings extends Model
     /**
      * @inheritdoc
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             [

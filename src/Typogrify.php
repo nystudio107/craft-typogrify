@@ -10,15 +10,14 @@
 
 namespace nystudio107\typogrify;
 
-use nystudio107\typogrify\services\TypogrifyService;
-use nystudio107\typogrify\twigextensions\TypogrifyTwigExtension;
-use nystudio107\typogrify\models\Settings;
-use nystudio107\typogrify\variables\TypogrifyVariable;
-
 use Craft;
+use craft\base\Model;
 use craft\base\Plugin;
 use craft\web\twig\variables\CraftVariable;
-
+use nystudio107\typogrify\models\Settings;
+use nystudio107\typogrify\services\TypogrifyService;
+use nystudio107\typogrify\twigextensions\TypogrifyTwigExtension;
+use nystudio107\typogrify\variables\TypogrifyVariable;
 use yii\base\Event;
 
 /**
@@ -28,9 +27,8 @@ use yii\base\Event;
  * @package   Typogrify
  * @since     1.0.0
  *
- * @property  Settings         $settings
+ * @property  Settings $settings
  * @property  TypogrifyService $typogrify
- * @method    Settings         getSettings()
  */
 class Typogrify extends Plugin
 {
@@ -47,13 +45,42 @@ class Typogrify extends Plugin
      */
     public static $variable;
 
+    // Public Properties
+    // =========================================================================
+
+    /**
+     * @var string
+     */
+    public string $schemaVersion = '1.0.0';
+
+    /**
+     * @var bool
+     */
+    public bool $hasCpSettings = false;
+    /**
+     * @var bool
+     */
+    public bool $hasCpSection = false;
+
+    /**
+     * @inheritdoc
+     */
+    public function __construct($id, $parent = null, array $config = [])
+    {
+        $config['components'] = [
+            'typogrify' => TypogrifyService::class,
+        ];
+
+        parent::__construct($id, $parent, $config);
+    }
+
     // Public Methods
     // =========================================================================
 
     /**
      * @inheritdoc
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
         self::$plugin = $this;
@@ -64,7 +91,7 @@ class Typogrify extends Plugin
         Event::on(
             CraftVariable::class,
             CraftVariable::EVENT_INIT,
-            function (Event $event) {
+            static function (Event $event) {
                 /** @var CraftVariable $variable */
                 $variable = $event->sender;
                 $variable->set('typogrify', self::$variable);
@@ -87,7 +114,7 @@ class Typogrify extends Plugin
     /**
      * @inheritdoc
      */
-    protected function createSettingsModel()
+    protected function createSettingsModel(): ?Model
     {
         return new Settings();
     }

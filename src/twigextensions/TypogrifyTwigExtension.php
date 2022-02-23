@@ -11,7 +11,6 @@
 namespace nystudio107\typogrify\twigextensions;
 
 use nystudio107\typogrify\Typogrify;
-
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
@@ -29,7 +28,7 @@ class TypogrifyTwigExtension extends AbstractExtension
     /**
      * @inheritdoc
      */
-    public function getName()
+    public function getName(): string
     {
         return 'Typogrify';
     }
@@ -37,7 +36,7 @@ class TypogrifyTwigExtension extends AbstractExtension
     /**
      * @inheritdoc
      */
-    public function getFilters()
+    public function getFilters(): array
     {
         $variable = Typogrify::$variable;
         return [
@@ -61,7 +60,7 @@ class TypogrifyTwigExtension extends AbstractExtension
     /**
      * @inheritdoc
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         $variable = Typogrify::$variable;
         return [

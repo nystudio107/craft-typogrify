@@ -11,15 +11,15 @@
 
 namespace nystudio107\typogrify\services;
 
-use nystudio107\typogrify\Typogrify;
-
-use Michelf\SmartyPants;
-
-use Stringy\Stringy;
-
 use Craft;
 use craft\base\Component;
-
+use DateInterval;
+use DateTime;
+use Michelf\SmartyPants;
+use nystudio107\typogrify\Typogrify;
+use PHP_Typography\PHP_Typography;
+use PHP_Typography\Settings;
+use Stringy\Stringy;
 use yii\helpers\Inflector;
 
 /**
@@ -33,14 +33,14 @@ class TypogrifyService extends Component
     // =========================================================================
 
     /**
-     * @var \PHP_Typography\PHP_Typography
+     * @var null|PHP_Typography
      */
-    public $phpTypography;
+    public ?PHP_Typography $phpTypography = null;
 
     /**
-     * @var \PHP_Typography\Settings
+     * @var null|Settings
      */
-    public $phpTypographySettings;
+    public ?Settings $phpTypographySettings = null;
 
     // Public Methods
     // =========================================================================
@@ -48,19 +48,19 @@ class TypogrifyService extends Component
     /**
      * @inheritdoc
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
 
         // Create a new phpTypographySettings instance
-        $this->phpTypographySettings = new \PHP_Typography\Settings();
+        $this->phpTypographySettings = new Settings();
 
         // Create a new PhpTypography instance
-        $this->phpTypography = new \PHP_Typography\PHP_Typography();
+        $this->phpTypography = new PHP_Typography();
 
         // Apply our default settings
         $settings = Typogrify::$plugin->getSettings();
-        if ($settings !== false) {
+        if ($settings) {
             $settingsArray = $settings->toArray();
             foreach ($settingsArray as $key => $value) {
                 if ($key !== 'default_escape') {
@@ -74,21 +74,19 @@ class TypogrifyService extends Component
      * Typogrify applies a veritable kitchen sink of typographic treatments to
      * beautify your web typography
      *
-     * @param string $text    The text or HTML fragment to process
-     * @param bool   $isTitle Optional. If the HTML fragment is a title.
+     * @param string $text The text or HTML fragment to process
+     * @param bool $isTitle Optional. If the HTML fragment is a title.
      *                        Default false
      *
      * @return string The processed HTML
      */
-    public function typogrify($text, $isTitle = false)
+    public function typogrify(string $text, bool $isTitle = false): string
     {
         if (empty($text)) {
             return '';
         }
 
-        $result = $this->phpTypography->process($text, $this->phpTypographySettings, $isTitle);
-
-        return $result;
+        return $this->phpTypography->process($text, $this->phpTypographySettings, $isTitle);
     }
 
     /**
@@ -97,21 +95,19 @@ class TypogrifyService extends Component
      * (or similar) feeds -- i.e. excluding processes that may cause issues in
      * contexts with limited character set intelligence.
      *
-     * @param string $text    The text or HTML fragment to process
-     * @param bool   $isTitle Optional. If the HTML fragment is a title.
+     * @param string $text The text or HTML fragment to process
+     * @param bool $isTitle Optional. If the HTML fragment is a title.
      *                        Default false
      *
      * @return string The processed HTML
      */
-    public function typogrifyFeed($text, $isTitle = false)
+    public function typogrifyFeed(string $text, bool $isTitle = false): string
     {
         if (empty($text)) {
             return '';
         }
 
-        $result = $this->phpTypography->process_feed($text, $this->phpTypographySettings, $isTitle);
-
-        return $result;
+        return $this->phpTypography->process_feed($text, $this->phpTypographySettings, $isTitle);
     }
 
     /**
@@ -119,7 +115,7 @@ class TypogrifyService extends Component
      *
      * @return string
      */
-    public function smartypants($text)
+    public function smartypants(string $text): string
     {
         if (empty($text)) {
             return '';
@@ -133,13 +129,13 @@ class TypogrifyService extends Component
      * truncating occurs, the string is further truncated so that the substring
      * may be appended without exceeding the desired length.
      *
-     * @param  string $string    The string to truncate
-     * @param  int    $length    Desired length of the truncated string
-     * @param  string $substring The substring to append if it can fit
+     * @param string $string The string to truncate
+     * @param int $length Desired length of the truncated string
+     * @param string $substring The substring to append if it can fit
      *
      * @return string with the resulting $str after truncating
      */
-    public function truncate($string, $length, $substring = '…'): string
+    public function truncate(string $string, int $length, string $substring = '…'): string
     {
         $result = $string;
 
@@ -157,13 +153,13 @@ class TypogrifyService extends Component
      * string is further truncated so that the substring may be appended without
      * exceeding the desired length.
      *
-     * @param  string $string    The string to truncate
-     * @param  int    $length    Desired length of the truncated string
-     * @param  string $substring The substring to append if it can fit
+     * @param string $string The string to truncate
+     * @param int $length Desired length of the truncated string
+     * @param string $substring The substring to append if it can fit
      *
      * @return string with the resulting $str after truncating
      */
-    public function truncateOnWord($string, $length, $substring = '…'): string
+    public function truncateOnWord(string $string, int $length, string $substring = '…'): string
     {
         $result = $string;
 
@@ -183,12 +179,12 @@ class TypogrifyService extends Component
      * then returns the initialized object. Throws an InvalidArgumentException
      * if the first argument is an array or object without a __toString method.
      *
-     * @param  string $string   The string initialize the Stringy object with
-     * @param  string $encoding The character encoding
+     * @param string $string The string initialize the Stringy object with
+     * @param null|string $encoding The character encoding
      *
      * @return Stringy
      */
-    public function stringy($string = '', $encoding = null)
+    public function stringy(string $string = '', ?string $encoding = null): Stringy
     {
         return Stringy::create($string, $encoding);
     }
@@ -204,13 +200,13 @@ class TypogrifyService extends Component
      * (e.g. kibibyte/KiB, mebibyte/MiB, ...) are used in the formatting
      * result.
      *
-     * @param string|int|float $bytes    value in bytes to be formatted.
-     * @param int              $decimals the number of digits after the decimal
+     * @param string|int|float $bytes value in bytes to be formatted.
+     * @param int $decimals the number of digits after the decimal
      *                                   point.
      *
      * @return string the formatted result.
      */
-    public function humanFileSize($bytes, $decimals = 1): string
+    public function humanFileSize(string|int|float $bytes, int $decimals = 1): string
     {
         $oldSize = Craft::$app->formatter->sizeFormatBase;
         Craft::$app->formatter->sizeFormatBase = 1000;
@@ -223,7 +219,7 @@ class TypogrifyService extends Component
     /**
      * Represents the value as duration in human readable format.
      *
-     * @param \DateInterval|string|int $value the value to be formatted.
+     * @param DateInterval|string|int $value the value to be formatted.
      *                                        Acceptable formats:
      *                                        - [DateInterval
      *                                        object](http://php.net/manual/ru/class.dateinterval.php)
@@ -251,7 +247,7 @@ class TypogrifyService extends Component
      *
      * @return string the formatted duration.
      */
-    public function humanDuration($value)
+    public function humanDuration(DateInterval|string|int $value): string
     {
         return Craft::$app->formatter->asDuration($value);
     }
@@ -266,7 +262,7 @@ class TypogrifyService extends Component
      * 2. Using a timestamp that is relative to the `$referenceTime`.
      * 3. Using a `DateInterval` object.
      *
-     * @param int|string|\DateTime|\DateInterval $value         the value to be
+     * @param int|string|DateTime|DateInterval $value the value to be
      *                                                          formatted. The
      *                                                          following types
      *                                                          of value are
@@ -281,7 +277,7 @@ class TypogrifyService extends Component
      * - a PHP DateInterval object (a positive time interval will refer to the
      * past, a negative one to the future)
      *
-     * @param int|string|\DateTime               $referenceTime if specified
+     * @param null|int|string|DateTime $referenceTime if specified
      *                                                          the value is
      *                                                          used as a
      *                                                          reference time
@@ -294,7 +290,7 @@ class TypogrifyService extends Component
      *
      * @return string the formatted result.
      */
-    public function humanRelativeTime($value, $referenceTime = null)
+    public function humanRelativeTime(int|string|DateTime|DateInterval $value, null|int|string|DateTime $referenceTime = null): string
     {
         return Craft::$app->formatter->asRelativeTime($value, $referenceTime);
     }
@@ -318,7 +314,7 @@ class TypogrifyService extends Component
      * 'children'
      *
      * @param string $word
-     * @param int    $number
+     * @param int $number
      *
      * @return string
      */
@@ -333,7 +329,7 @@ class TypogrifyService extends Component
      * 'child'
      *
      * @param string $word
-     * @param int    $number
+     * @param int $number
      *
      * @return string
      */
@@ -349,7 +345,7 @@ class TypogrifyService extends Component
      * n, d! ¿Espanol?
      *
      * @param string $string
-     * @param null   $transliterator
+     * @param null $transliterator
      *
      * @return string
      */
@@ -364,7 +360,7 @@ class TypogrifyService extends Component
      * appended without exceeding the desired length.
      *
      * @param string $string
-     * @param int    $length
+     * @param int $length
      * @param string $substring
      *
      * @return string
@@ -374,6 +370,6 @@ class TypogrifyService extends Component
         $words = preg_split("/[\s]+/u", strip_tags($string));
         $result = implode(' ', array_slice($words, 0, $length));
 
-        return count($words) > $length ? $result.$substring : $result;
+        return count($words) > $length ? $result . $substring : $result;
     }
 }
