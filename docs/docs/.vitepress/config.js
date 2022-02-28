@@ -14,9 +14,9 @@ module.exports = {
     docsDir: 'docs/docs',
     docsBranch: 'develop',
     algolia: {
-      appId: '',
-      apiKey: '',
-      indexName: 'typogrify'
+      appId: 'IWCR84RUUZ',
+      apiKey: 'c0990b4abc81fab70346627d74a4c757',
+      indexName: 'nystudio107-typogrify'
     },
     editLinks: true,
     editLinkText: 'Edit this page on GitHub',
