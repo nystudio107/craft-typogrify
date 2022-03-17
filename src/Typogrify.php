@@ -62,6 +62,9 @@ class Typogrify extends Plugin
      */
     public bool $hasCpSection = false;
 
+    // Public Methods
+    // =========================================================================
+
     /**
      * @inheritdoc
      */
@@ -73,9 +76,6 @@ class Typogrify extends Plugin
 
         parent::__construct($id, $parent, $config);
     }
-
-    // Public Methods
-    // =========================================================================
 
     /**
      * @inheritdoc
