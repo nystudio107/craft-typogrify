@@ -74,19 +74,19 @@ class TypogrifyService extends Component
      * Typogrify applies a veritable kitchen sink of typographic treatments to
      * beautify your web typography
      *
-     * @param string $text The text or HTML fragment to process
+     * @param string|int|float|null $text The text or HTML fragment to process
      * @param bool $isTitle Optional. If the HTML fragment is a title.
      *                        Default false
      *
      * @return string The processed HTML
      */
-    public function typogrify(string $text, bool $isTitle = false): string
+    public function typogrify(string|int|float|null $text, bool $isTitle = false): string
     {
         if (empty($text)) {
             return '';
         }
 
-        return $this->phpTypography->process($text, $this->phpTypographySettings, $isTitle);
+        return $this->phpTypography->process((string) $text, $this->phpTypographySettings, $isTitle);
     }
 
     /**
@@ -95,33 +95,33 @@ class TypogrifyService extends Component
      * (or similar) feeds -- i.e. excluding processes that may cause issues in
      * contexts with limited character set intelligence.
      *
-     * @param string $text The text or HTML fragment to process
+     * @param string|int|float|null $text The text or HTML fragment to process
      * @param bool $isTitle Optional. If the HTML fragment is a title.
      *                        Default false
      *
      * @return string The processed HTML
      */
-    public function typogrifyFeed(string $text, bool $isTitle = false): string
+    public function typogrifyFeed(string|int|float|null $text, bool $isTitle = false): string
     {
         if (empty($text)) {
             return '';
         }
 
-        return $this->phpTypography->process_feed($text, $this->phpTypographySettings, $isTitle);
+        return $this->phpTypography->process_feed((string) $text, $this->phpTypographySettings, $isTitle);
     }
 
     /**
-     * @param string $text
+     * @param string|int|float|null $text
      *
      * @return string
      */
-    public function smartypants(string $text): string
+    public function smartypants(string|int|float|null $text): string
     {
         if (empty($text)) {
             return '';
         }
 
-        return SmartyPants::defaultTransform($text);
+        return SmartyPants::defaultTransform((string) $text);
     }
 
     /**
@@ -129,13 +129,13 @@ class TypogrifyService extends Component
      * truncating occurs, the string is further truncated so that the substring
      * may be appended without exceeding the desired length.
      *
-     * @param string $string The string to truncate
+     * @param string|int|float|null $string The string to truncate
      * @param int $length Desired length of the truncated string
      * @param string $substring The substring to append if it can fit
      *
      * @return string with the resulting $str after truncating
      */
-    public function truncate(string $string, int $length, string $substring = '…'): string
+    public function truncate(string|int|float|null $string, int $length, string $substring = '…'): string
     {
         $result = $string;
 
@@ -153,13 +153,13 @@ class TypogrifyService extends Component
      * string is further truncated so that the substring may be appended without
      * exceeding the desired length.
      *
-     * @param string $string The string to truncate
+     * @param string|int|float|null $string The string to truncate
      * @param int $length Desired length of the truncated string
      * @param string $substring The substring to append if it can fit
      *
      * @return string with the resulting $str after truncating
      */
-    public function truncateOnWord(string $string, int $length, string $substring = '…'): string
+    public function truncateOnWord(string|int|float|null $string, int $length, string $substring = '…'): string
     {
         $result = $string;
 
@@ -179,12 +179,12 @@ class TypogrifyService extends Component
      * then returns the initialized object. Throws an InvalidArgumentException
      * if the first argument is an array or object without a __toString method.
      *
-     * @param string $string The string initialize the Stringy object with
+     * @param string|int|float|null $string The string initialize the Stringy object with
      * @param null|string $encoding The character encoding
      *
      * @return Stringy
      */
-    public function stringy(string $string = '', ?string $encoding = null): Stringy
+    public function stringy(string|int|float|null $string = '', ?string $encoding = null): Stringy
     {
         return Stringy::create($string, $encoding);
     }
