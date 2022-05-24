@@ -1,5 +1,12 @@
 # Typogrify Changelog
 
+## 4.0.0 - 2022.05.24
+### Added
+* Initial Craft CMS 4 release
+
+### Fixed
+* Fixed the various filters to allow for the passing of empty values via ([#73](https://github.com/nystudio107/craft-typogrify/pull/73))
+
 ## 4.0.0-beta.2 - 2022.03.04
 
 ### Fixed
