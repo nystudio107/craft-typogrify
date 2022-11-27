@@ -86,7 +86,7 @@ class TypogrifyService extends Component
             return '';
         }
 
-        return $this->phpTypography->process((string) $text, $this->phpTypographySettings, $isTitle);
+        return $this->phpTypography->process((string)$text, $this->phpTypographySettings, $isTitle);
     }
 
     /**
@@ -107,7 +107,7 @@ class TypogrifyService extends Component
             return '';
         }
 
-        return $this->phpTypography->process_feed((string) $text, $this->phpTypographySettings, $isTitle);
+        return $this->phpTypography->process_feed((string)$text, $this->phpTypographySettings, $isTitle);
     }
 
     /**
@@ -121,7 +121,7 @@ class TypogrifyService extends Component
             return '';
         }
 
-        return SmartyPants::defaultTransform((string) $text);
+        return SmartyPants::defaultTransform((string)$text);
     }
 
     /**
@@ -137,7 +137,7 @@ class TypogrifyService extends Component
      */
     public function truncate(string|int|float|null $string, int $length, string $substring = '…'): string
     {
-        $result = $string;
+        $result = (string)$string;
 
         if (!empty($string)) {
             $string = strip_tags($string);
@@ -161,7 +161,7 @@ class TypogrifyService extends Component
      */
     public function truncateOnWord(string|int|float|null $string, int $length, string $substring = '…'): string
     {
-        $result = $string;
+        $result = (string)$string;
 
         if (!empty($string)) {
             $string = strip_tags($string);
