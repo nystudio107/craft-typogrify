@@ -1,5 +1,14 @@
 # Typogrify Changelog
 
+## 4.0.1 - 2022.11.27
+### Changed
+* Switch to VitePress `^1.0.0-alpha.29` for the documentation
+* Add the correct Algolia keys for the doc search functionality
+* Add `allow-plugins` to the `composer.json` to enable CI to work
+
+### Fixed
+* Fixed an issue where `null` or other non-string values were not typecast when passed to `truncate()` or `truncateOnWord()`
+
 ## 4.0.0 - 2022.05.24
 ### Added
 * Initial Craft CMS 4 release
