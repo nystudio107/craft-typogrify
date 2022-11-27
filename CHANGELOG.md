@@ -1,5 +1,11 @@
 # Typogrify Changelog
 
+## 1.1.20 - 2022.11.27
+### Changed
+* Switch to VitePress `^1.0.0-alpha.29` for the documentation
+* Add the correct Algolia keys for the doc search functionality
+* Add `allow-plugins` to the `composer.json` to enable CI to work
+
 ## 1.1.19 - 2022.02.22
 ### Added
 
