@@ -235,7 +235,7 @@ class Settings extends Model
     /**
      * Enables/disables extra whitespace before certain punction marks, as is the French custom.
      *
-     * @param bool
+     * @var bool
      */
     public bool $set_french_punctuation_spacing = false;
 
