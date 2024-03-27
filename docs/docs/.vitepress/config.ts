@@ -3,7 +3,7 @@ import {defineConfig} from 'vitepress'
 export default defineConfig({
   title: 'Typogrify Plugin',
   description: 'Documentation for the Typogrify plugin',
-  base: '/docs/typogrify/',
+  base: '/docs/typogrify/v1/',
   lang: 'en-US',
   head: [
     ['meta', {content: 'https://github.com/nystudio107', property: 'og:see_also',}],
@@ -18,13 +18,16 @@ export default defineConfig({
     ],
     logo: '/img/plugin-logo.svg',
     editLink: {
-      pattern: 'https://github.com/nystudio107/craft-typogrify/edit/develop-v3/docs/docs/:path',
+      pattern: 'https://github.com/nystudio107/craft-typogrify/edit/develop/docs/docs/:path',
       text: 'Edit this page on GitHub'
     },
     algolia: {
       appId: 'IWCR84RUUZ',
       apiKey: 'd17b32a7fd4c9ef1f5e6059b9a7b0352',
-      indexName: 'nystudio107-typogrify'
+      indexName: 'nystudio107-typogrify',
+      searchParameters: {
+        facetFilters: ["version:v1"],
+      },
     },
     lastUpdatedText: 'Last Updated',
     sidebar: [],
@@ -33,6 +36,13 @@ export default defineConfig({
       {text: 'Store', link: 'https://plugins.craftcms.com/typogrify'},
       {text: 'Changelog', link: 'https://nystudio107.com/plugins/typogrify/changelog'},
       {text: 'Issues', link: 'https://github.com/nystudio107/craft-typogrify/issues'},
+      {
+        text: 'v1', items: [
+          {text: 'v5', link: 'https://nystudio107.com/docs/typogrify/'},
+          {text: 'v4', link: 'https://nystudio107.com/docs/typogrify/v4/'},
+          {text: 'v1', link: '/'},
+        ],
+      },
     ]
   },
 });
