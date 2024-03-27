@@ -309,8 +309,10 @@ class TypogrifyVariable
 
         if ($settings['default_escape'] === true) {
             $twig = Craft::$app->getView()->getTwig();
-            $twig_escape_filter = $twig->getFilter('twig_escape_filter');
-            $text = $twig_escape_filter->getCallable()($twig, $text);
+            $twig_escape_filter = $twig->getFilter('e');
+            if ($twig_escape_filter) {
+                $text = $twig_escape_filter->getCallable()($twig, $text);
+            }
         }
 
         return $text;
