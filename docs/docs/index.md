@@ -1,6 +1,6 @@
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/badges/quality-score.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/?branch=v1) [![Code Coverage](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/badges/coverage.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/?branch=v1) [![Build Status](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/badges/build.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/build-status/v1) [![Code Intelligence Status](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/badges/code-intelligence.svg?b=v1)](https://scrutinizer-ci.com/code-intelligence)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/badges/quality-score.png?b=v4)](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/?branch=v4) [![Code Coverage](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/badges/coverage.png?b=v4)](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/?branch=v4) [![Build Status](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/badges/build.png?b=v4)](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/build-status/v4) [![Code Intelligence Status](https://scrutinizer-ci.com/g/nystudio107/craft-typogrify/badges/code-intelligence.svg?b=v4)](https://scrutinizer-ci.com/code-intelligence)
 
-# Typogrify plugin for Craft CMS 3.x
+# Typogrify plugin for Craft CMS 4.x
 
 Typogrify prettifies your web typography by preventing ugly quotes and 'widows' and more
 
@@ -8,7 +8,7 @@ Typogrify prettifies your web typography by preventing ugly quotes and 'widows' 
 
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0 or later.
+This plugin requires Craft CMS 4.0.0 or later.
 
 ## Installation
 
@@ -36,7 +36,7 @@ It allows you to "client-proof" sites by applying all of these typographic nicit
 
 Typogrify also has some handy _inflector_ functions to do things like give you the plural or singular version of a word, human-readable relative times/durations, human-readable file sizes, and more.
 
-This plugin is roughly a Craft 3 port of Jamie Pittock's wonderful [Craft-Typogrify](https://github.com/jamiepittock/craft-typogrify) plugin for Craft 2.x, and uses the [php-typography](https://github.com/mundschenk-at/php-typography) and [php-smartypants](https://github.com/michelf/php-smartypants) to do its thing.
+This plugin is roughly a Craft port of Jamie Pittock's wonderful [Craft-Typogrify](https://github.com/jamiepittock/craft-typogrify) plugin for Craft 2.x, and uses the [php-typography](https://github.com/mundschenk-at/php-typography) and [php-smartypants](https://github.com/michelf/php-smartypants) to do its thing.
 
 ## Configuring Typogrify
 
@@ -178,7 +178,7 @@ If it doesn't look like Typogrify is doing anything to the HTML you're passing i
 
 Applies [smarty pants](https://github.com/michelf/php-smartypants) to curl quotes.
 
-The `smartypants` filter is provided primary to make upgrading sites from Craft 2.x to Craft 3.x easier, if you were using the Craft 2.x Tyopgrify plugin already. The `typogrify` filter does everything that the `smartypants` filter can do, and more.
+The `smartypants` filter is provided primary to make upgrading sites from Craft 2.x to later versions of Craft easier, if you were using the Craft 2.x Tyopgrify plugin already. The `typogrify` filter does everything that the `smartypants` filter can do, and more.
 
 Usage:
 

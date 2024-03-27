@@ -91,7 +91,7 @@ class Typogrify extends Plugin
         Event::on(
             CraftVariable::class,
             CraftVariable::EVENT_INIT,
-            static function (Event $event) {
+            static function(Event $event) {
                 /** @var CraftVariable $variable */
                 $variable = $event->sender;
                 $variable->set('typogrify', self::$variable);
