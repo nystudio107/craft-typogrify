@@ -1,6 +1,6 @@
 # Typogrify Changelog
 
-## 1.1.21 - UNRELEASED
+## 1.1.21 - 2024.03.27
 ### Added
 * Add `phpstan` and `ecs` code linting
 * Add `code-analysis.yaml` GitHub action
