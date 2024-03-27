@@ -10,11 +10,10 @@
 
 namespace nystudio107\typogrify\models;
 
-use \PHP_Typography\Settings\Dash_Style;
-use \PHP_Typography\Settings\Quote_Style;
-
 use craft\base\Model;
 use craft\validators\ArrayValidator;
+use PHP_Typography\Settings\Dash_Style;
+use PHP_Typography\Settings\Quote_Style;
 
 /**
  * @author    nystudio107
@@ -54,7 +53,7 @@ class Settings extends Model
         "textarea",
         "title",
         "var",
-        "math"
+        "math",
     ];
 
     /**
@@ -64,7 +63,7 @@ class Settings extends Model
      */
     public $set_classes_to_ignore = [
         "vcard",
-        "noTypo"
+        "noTypo",
     ];
 
     /**
@@ -236,7 +235,7 @@ class Settings extends Model
     /**
      * Enables/disables extra whitespace before certain punction marks, as is the French custom.
      *
-     * @param bool
+     * @var bool
      */
     public $set_french_punctuation_spacing = false;
 
@@ -369,7 +368,7 @@ class Settings extends Model
         "blockquote",
         "li",
         "dd",
-        "dt"
+        "dt",
     ];
 
     /**

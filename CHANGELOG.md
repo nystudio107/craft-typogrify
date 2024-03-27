@@ -1,5 +1,15 @@
 # Typogrify Changelog
 
+## 1.1.21 - 2024.03.27
+### Added
+* Add `phpstan` and `ecs` code linting
+* Add `code-analysis.yaml` GitHub action
+
+### Changed
+* Updated docs to use node 20 & a new sitemap plugin
+* PHPstan code cleanup
+* ECS code cleanup
+
 ## 1.1.20 - 2022.11.27
 ### Changed
 * Switch to VitePress `^1.0.0-alpha.29` for the documentation

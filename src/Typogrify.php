@@ -10,14 +10,14 @@
 
 namespace nystudio107\typogrify;
 
-use nystudio107\typogrify\services\TypogrifyService;
-use nystudio107\typogrify\twigextensions\TypogrifyTwigExtension;
-use nystudio107\typogrify\models\Settings;
-use nystudio107\typogrify\variables\TypogrifyVariable;
-
 use Craft;
 use craft\base\Plugin;
 use craft\web\twig\variables\CraftVariable;
+use nystudio107\typogrify\models\Settings;
+
+use nystudio107\typogrify\services\TypogrifyService;
+use nystudio107\typogrify\twigextensions\TypogrifyTwigExtension;
+use nystudio107\typogrify\variables\TypogrifyVariable;
 
 use yii\base\Event;
 
@@ -64,7 +64,7 @@ class Typogrify extends Plugin
         Event::on(
             CraftVariable::class,
             CraftVariable::EVENT_INIT,
-            function (Event $event) {
+            function(Event $event) {
                 /** @var CraftVariable $variable */
                 $variable = $event->sender;
                 $variable->set('typogrify', self::$variable);
