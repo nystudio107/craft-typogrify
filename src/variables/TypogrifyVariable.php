@@ -316,5 +316,4 @@ class TypogrifyVariable
 
         return $text;
     }
-
 }

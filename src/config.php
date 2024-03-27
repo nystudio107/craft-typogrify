@@ -8,8 +8,8 @@
  * @copyright Copyright (c) 2017 nystudio107
  */
 
-use \PHP_Typography\Settings\Dash_Style;
-use \PHP_Typography\Settings\Quote_Style;
+use PHP_Typography\Settings\Dash_Style;
+use PHP_Typography\Settings\Quote_Style;
 
 /**
  * Typogrify config.php
@@ -46,13 +46,13 @@ return [
         "textarea",
         "title",
         "var",
-        "math"
+        "math",
     ],
 
     // sets classes where typography of children will be untouched
     "set_classes_to_ignore" => [
         "vcard",
-        "noTypo"
+        "noTypo",
     ],
 
     // sets IDs where typography of children will be untouched
@@ -213,7 +213,7 @@ return [
         "blockquote",
         "li",
         "dd",
-        "dt"
+        "dt",
     ],
 
     // enables hyphenation of text

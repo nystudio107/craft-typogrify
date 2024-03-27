@@ -53,7 +53,7 @@ class Settings extends Model
         "textarea",
         "title",
         "var",
-        "math"
+        "math",
     ];
 
     /**
@@ -63,7 +63,7 @@ class Settings extends Model
      */
     public array $set_classes_to_ignore = [
         "vcard",
-        "noTypo"
+        "noTypo",
     ];
 
     /**
@@ -368,7 +368,7 @@ class Settings extends Model
         "blockquote",
         "li",
         "dd",
-        "dt"
+        "dt",
     ];
 
     /**
