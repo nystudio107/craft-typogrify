@@ -11,12 +11,12 @@
 namespace nystudio107\typogrify\variables;
 
 use Craft;
-
 use craft\helpers\Template;
+use DateInterval;
+use DateTime;
 use nystudio107\typogrify\Typogrify;
-
+use PHP_Typography\Settings;
 use Stringy\Stringy;
-
 use Twig\Markup;
 
 /**
@@ -33,8 +33,8 @@ class TypogrifyVariable
      * Typogrify applies a veritable kitchen sink of typographic treatments to
      * beautify your web typography
      *
-     * @param string $text    The text or HTML fragment to process
-     * @param bool   $isTitle Optional. If the HTML fragment is a title.
+     * @param string $text The text or HTML fragment to process
+     * @param bool $isTitle Optional. If the HTML fragment is a title.
      *                        Default false
      *
      * @return Markup
@@ -51,8 +51,8 @@ class TypogrifyVariable
      * (or similar) feeds -- i.e. excluding processes that may cause issues in
      * contexts with limited character set intelligence.
      *
-     * @param string $text    The text or HTML fragment to process
-     * @param bool   $isTitle Optional. If the HTML fragment is a title.
+     * @param string $text The text or HTML fragment to process
+     * @param bool $isTitle Optional. If the HTML fragment is a title.
      *                        Default false
      *
      * @return Markup
@@ -75,9 +75,9 @@ class TypogrifyVariable
     }
 
     /**
-     * @return \PHP_Typography\Settings
+     * @return Settings
      */
-    public function getPhpTypographySettings(): \PHP_Typography\Settings
+    public function getPhpTypographySettings(): Settings
     {
         return Typogrify::$plugin->typogrify->phpTypographySettings;
     }
@@ -87,9 +87,9 @@ class TypogrifyVariable
      * truncating occurs, the string is further truncated so that the substring
      * may be appended without exceeding the desired length.
      *
-     * @param  string $string    The string to truncate
-     * @param  int    $length    Desired length of the truncated string
-     * @param  string $substring The substring to append if it can fit
+     * @param string $string The string to truncate
+     * @param int $length Desired length of the truncated string
+     * @param string $substring The substring to append if it can fit
      *
      * @return string with the resulting $str after truncating
      */
@@ -104,9 +104,9 @@ class TypogrifyVariable
      * string is further truncated so that the substring may be appended without
      * exceeding the desired length.
      *
-     * @param  string $string    The string to truncate
-     * @param  int    $length    Desired length of the truncated string
-     * @param  string $substring The substring to append if it can fit
+     * @param string $string The string to truncate
+     * @param int $length Desired length of the truncated string
+     * @param string $substring The substring to append if it can fit
      *
      * @return string with the resulting $str after truncating
      */
@@ -122,8 +122,8 @@ class TypogrifyVariable
      * then returns the initialized object. Throws an InvalidArgumentException
      * if the first argument is an array or object without a __toString method.
      *
-     * @param  string $string   The string initialize the Stringy object with
-     * @param  string $encoding The character encoding
+     * @param string $string The string initialize the Stringy object with
+     * @param string $encoding The character encoding
      *
      * @return Stringy
      */
@@ -140,8 +140,8 @@ class TypogrifyVariable
      * If [[sizeFormatBase]] is 1024, [binary prefixes](http://en.wikipedia.org/wiki/Binary_prefix)
      * (e.g. kibibyte/KiB, mebibyte/MiB, ...) are used in the formatting result.
      *
-     * @param string|int|float $bytes    value in bytes to be formatted.
-     * @param int              $decimals the number of digits after the decimal point.
+     * @param string|int|float $bytes value in bytes to be formatted.
+     * @param int $decimals the number of digits after the decimal point.
      *
      * @return string the formatted result.
      */
@@ -153,7 +153,7 @@ class TypogrifyVariable
     /**
      * Represents the value as duration in human readable format.
      *
-     * @param \DateInterval|string|int $value the value to be formatted. Acceptable formats:
+     * @param DateInterval|string|int $value the value to be formatted. Acceptable formats:
      *  - [DateInterval object](http://php.net/manual/ru/class.dateinterval.php)
      *  - integer - number of seconds. For example: value `131` represents `2 minutes, 11 seconds`
      *  - ISO8601 duration format. For example, all of these values represent `1 day, 2 hours, 30 minutes` duration:
@@ -179,7 +179,7 @@ class TypogrifyVariable
      * 2. Using a timestamp that is relative to the `$referenceTime`.
      * 3. Using a `DateInterval` object.
      *
-     * @param int|string|\DateTime|\DateInterval $value the value to be formatted. The following
+     * @param int|string|DateTime|DateInterval $value the value to be formatted. The following
      * types of value are supported:
      *
      * - an integer representing a UNIX timestamp
@@ -188,7 +188,7 @@ class TypogrifyVariable
      * - a PHP [DateTime](http://php.net/manual/en/class.datetime.php) object
      * - a PHP DateInterval object (a positive time interval will refer to the past, a negative one to the future)
      *
-     * @param int|string|\DateTime $referenceTime if specified the value is used as a reference time instead of `now`
+     * @param int|string|DateTime $referenceTime if specified the value is used as a reference time instead of `now`
      * when `$value` is not a `DateInterval` object.
      *
      * @return string the formatted result.
@@ -216,7 +216,7 @@ class TypogrifyVariable
      * For example, 'apple' will become 'apples', and 'child' will become 'children'
      *
      * @param string $word
-     * @param int    $number
+     * @param int $number
      *
      * @return string
      */
@@ -230,7 +230,7 @@ class TypogrifyVariable
      * For example, 'apples' will become 'apple', and 'children' will become 'child'
      *
      * @param string $word
-     * @param int    $number
+     * @param int $number
      *
      * @return string
      */
@@ -245,7 +245,7 @@ class TypogrifyVariable
      * will be transliterated to huo qu dao dochira Ukrainsʹka: g,e, Srpska: d, n, d! ¿Espanol?
      *
      * @param string $string
-     * @param null   $transliterator
+     * @param null $transliterator
      *
      * @return string
      */
@@ -260,7 +260,7 @@ class TypogrifyVariable
      * exceeding the desired length.
      *
      * @param string $string
-     * @param int    $length
+     * @param int $length
      * @param string $substring
      *
      * @return string
@@ -283,22 +283,22 @@ class TypogrifyVariable
     private function normalizeText($text): string
     {
         /* @TODO: try to resolve at a later date; Twig's `| raw` just returns a string, not `Markup` so we can't use that as a check
-                if ($text instanceof Markup) {
-                    // Either came from a Redactor field (or the like) or they manually added a |raw tag. We can trust it
-                    $text = (string)$text;
-                } else {
-                    // We don't trust it, so escape any HTML
-                    $twig = Craft::$app->view->twig;
-                    try {
-                        $text = twig_escape_filter($twig, $text);
-                    } catch (\Twig_Error_Runtime $e) {
-                        $error = $e->getMessage();
-                        Craft::error($error, __METHOD__);
-                        // We don't want unescaped text slipping through, so set the text to the error message
-                        $text = $error;
-                    }
-                }
-        */
+         * if ($text instanceof Markup) {
+         * // Either came from a Redactor field (or the like) or they manually added a |raw tag. We can trust it
+         * $text = (string)$text;
+         * } else {
+         * // We don't trust it, so escape any HTML
+         * $twig = Craft::$app->view->twig;
+         * try {
+         * $text = twig_escape_filter($twig, $text);
+         * } catch (\Twig_Error_Runtime $e) {
+         * $error = $e->getMessage();
+         * Craft::error($error, __METHOD__);
+         * // We don't want unescaped text slipping through, so set the text to the error message
+         * $text = $error;
+         * }
+         * }
+         */
         // If it's null or otherwise empty, just return an empty string
         if (empty($text)) {
             $text = '';
@@ -307,9 +307,10 @@ class TypogrifyVariable
 
         $settings = Typogrify::$plugin->getSettings();
 
-        if ($settings['default_escape'] === true) {
-            $twig = Craft::$app->view->twig;
-            $text = twig_escape_filter($twig, $text);
+        if ($settings && $settings['default_escape'] === true) {
+            $twig = Craft::$app->getView()->getTwig();
+            $twig_escape_filter = $twig->getFilter('twig_escape_filter');
+            $text = $twig_escape_filter->getCallable()($twig, $text);
         }
 
         return $text;

@@ -12,7 +12,6 @@ namespace nystudio107\typogrify\models;
 
 use craft\base\Model;
 use craft\validators\ArrayValidator;
-
 use PHP_Typography\Settings\Dash_Style;
 use PHP_Typography\Settings\Quote_Style;
 
@@ -236,7 +235,7 @@ class Settings extends Model
     /**
      * Enables/disables extra whitespace before certain punction marks, as is the French custom.
      *
-     * @param bool
+     * @var bool
      */
     public $set_french_punctuation_spacing = false;
 
