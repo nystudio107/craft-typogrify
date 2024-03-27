@@ -1,5 +1,9 @@
 # Typogrify Changelog
 
+## 1.1.22 - 2024.03.27
+### Fixed
+* Fixed a regression that happened when modernizing the `default_escape` functionality ([#86](https://github.com/nystudio107/craft-typogrify/issues/86))
+
 ## 1.1.21 - 2024.03.27
 ### Added
 * Add `phpstan` and `ecs` code linting
