@@ -11,14 +11,14 @@
 
 namespace nystudio107\typogrify\services;
 
-use nystudio107\typogrify\Typogrify;
+use Craft;
+
+use craft\base\Component;
 
 use Michelf\SmartyPants;
 
+use nystudio107\typogrify\Typogrify;
 use Stringy\Stringy;
-
-use Craft;
-use craft\base\Component;
 
 use yii\helpers\Inflector;
 
@@ -374,6 +374,6 @@ class TypogrifyService extends Component
         $words = preg_split("/[\s]+/u", strip_tags($string));
         $result = implode(' ', array_slice($words, 0, $length));
 
-        return count($words) > $length ? $result.$substring : $result;
+        return count($words) > $length ? $result . $substring : $result;
     }
 }

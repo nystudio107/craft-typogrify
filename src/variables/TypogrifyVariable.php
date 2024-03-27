@@ -10,14 +10,14 @@
 
 namespace nystudio107\typogrify\variables;
 
+use Craft;
+
+use craft\helpers\Template;
 use nystudio107\typogrify\Typogrify;
 
-use Craft;
-use craft\helpers\Template;
+use Stringy\Stringy;
 
 use Twig\Markup;
-
-use Stringy\Stringy;
 
 /**
  * @author    nystudio107
@@ -282,23 +282,23 @@ class TypogrifyVariable
      */
     private function normalizeText($text): string
     {
-/* @TODO: try to resolve at a later date; Twig's `| raw` just returns a string, not `Markup` so we can't use that as a check
-        if ($text instanceof Markup) {
-            // Either came from a Redactor field (or the like) or they manually added a |raw tag. We can trust it
-            $text = (string)$text;
-        } else {
-            // We don't trust it, so escape any HTML
-            $twig = Craft::$app->view->twig;
-            try {
-                $text = twig_escape_filter($twig, $text);
-            } catch (\Twig_Error_Runtime $e) {
-                $error = $e->getMessage();
-                Craft::error($error, __METHOD__);
-                // We don't want unescaped text slipping through, so set the text to the error message
-                $text = $error;
-            }
-        }
-*/
+        /* @TODO: try to resolve at a later date; Twig's `| raw` just returns a string, not `Markup` so we can't use that as a check
+                if ($text instanceof Markup) {
+                    // Either came from a Redactor field (or the like) or they manually added a |raw tag. We can trust it
+                    $text = (string)$text;
+                } else {
+                    // We don't trust it, so escape any HTML
+                    $twig = Craft::$app->view->twig;
+                    try {
+                        $text = twig_escape_filter($twig, $text);
+                    } catch (\Twig_Error_Runtime $e) {
+                        $error = $e->getMessage();
+                        Craft::error($error, __METHOD__);
+                        // We don't want unescaped text slipping through, so set the text to the error message
+                        $text = $error;
+                    }
+                }
+        */
         // If it's null or otherwise empty, just return an empty string
         if (empty($text)) {
             $text = '';
