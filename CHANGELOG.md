@@ -1,5 +1,9 @@
 # Typogrify Changelog
 
+## 5.0.3 - 2026.05.07
+### Fixed
+* Addressed an issue with `voku/stringy` and modern versions of PHP by updating to `^7.0.0` ([#95](https://github.com/nystudio107/craft-typogrify/issues/95))
+
 ## 5.0.2 - 2026.01.27
 ### Fixed
 * Fixed an issue with Craft `^5.9` where it throws an error because `craftcms/cms` no longer uses the `Stringy` package ([#94](https://github.com/nystudio107/craft-typogrify/issues/94))
